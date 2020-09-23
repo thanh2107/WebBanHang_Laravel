@@ -23,3 +23,20 @@
 		'as'=>'trang-chu'
 	]);
 
+
+Route::get('loai-san-pham',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getLoaiSp',
+		'as'=>'loai-san-pham'
+	]);
+
+Route::get('san-pham',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getSanPham',
+		'as'=>'san-pham'
+	]);
+Route::get('lien-he',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getLienHe',
+		'as'=>'lien-he'
+	]);

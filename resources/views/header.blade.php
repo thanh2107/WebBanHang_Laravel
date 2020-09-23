@@ -13,7 +13,7 @@
 					</div>
 					<div class="col-xl-6 col-lg-5">
 						<form class="header-search-form">
-							<input type="text" placeholder="Search on divisima ....">
+							<input type="text" placeholder="Tìm kiếm trong divisima ....">
 							<button><i class="flaticon-search"></i></button>
 						</form>
 					</div>
@@ -21,14 +21,14 @@
 						<div class="user-panel">
 							<div class="up-item">
 								<i class="flaticon-profile"></i>
-								<a href="#">Sign</a> In or <a href="#">Create Account</a>
+								<a href="#">Đăng nhập</a> hoặc <a href="#">tạo tài khoản</a>
 							</div>
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="flaticon-bag"></i>
 									<span>0</span>
 								</div>
-								<a href="#">Shopping Cart</a>
+								<a href="#">Giỏ hàng</a>
 							</div>
 						</div>
 					</div>
@@ -39,13 +39,17 @@
 			<div class="container">
 				<!-- menu -->
 				<ul class="main-menu">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Women</a></li>
-					<li><a href="#">Men</a></li>
-					<li><a href="#">Jewelry
-						<span class="new">New</span>
-					</a></li>
-					<li><a href="#">Shoes</a>
+					<li><a href= "{{route('trang-chu')}}">Trang chủ</a></li>
+					<li><a href="#">Đồng giá</a>
+						<ul class="sub-menu">
+							<li><a href="checkout.html">Đồng giá 39k-49k-59k</a></li>
+							<li><a href="product.html">Đồng giá 99k</a></li>
+							<li><a href="category.html">Đồng giá 149k</a></li>
+							<li><a href="cart.html">Đồng giá 199k</a></li>
+						</ul>	
+					</li>
+
+					<li><a href="{{route('loai-san-pham')}}">Sản phẩm</a>
 						<ul class="sub-menu">
 							<li><a href="#">Sneakers</a></li>
 							<li><a href="#">Sandals</a></li>
@@ -54,16 +58,20 @@
 							<li><a href="#">Flip Flops</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Pages</a>
+					<li><a href="#">Phụ kiện
+						<span class="new">New</span>
+					</a></li>
+					<li><a href="#">Cửa hàng</a>
 						<ul class="sub-menu">
-							<li><a href="product.html">Product Page</a></li>
-							<li><a href="category.html">Category Page</a></li>
-							<li><a href="cart.html">Cart Page</a></li>
-							<li><a href="checkout.html">Checkout Page</a></li>
-							<li><a href="contact.html">Contact Page</a></li>
+							<li><a href="#">CN1: 1 CMT8 </a></li>
+							<li><a href="#">CN2: 1 Lý Thường Kiệt</a></li>
+							<li><a href="#">CN3: 1 Nguyễn Thị Minh Khai</a></li>
+	
 						</ul>
 					</li>
-					<li><a href="#">Blog</a></li>
+					<li><a href="#">Sự kiện</a></li>
+					<li><a href="#">Review</a></li>
+					<li><a href="{{route('lien-he')}}">Liên hệ</a></li>
 				</ul>
 			</div>
 		</nav>

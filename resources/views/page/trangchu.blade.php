@@ -12,8 +12,8 @@
 							<span>New Arrivals</span>
 							<h2>denim jackets</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-							<a href="#" class="site-btn sb-line">DISCOVER</a>
-							<a href="#" class="site-btn sb-white">ADD TO CART</a>
+							<a href="#" class="site-btn sb-line">KHÁM PHÁ</a>
+							<a href="#" class="site-btn sb-white">THÊM VÀO GIỎ</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">
@@ -30,8 +30,8 @@
 							<span>New Arrivals</span>
 							<h2>denim jackets</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-							<a href="#" class="site-btn sb-line">DISCOVER</a>
-							<a href="#" class="site-btn sb-white">ADD TO CART</a>
+							<a href="#" class="site-btn sb-line">KHÁM PHÁ</a>
+							<a href="#" class="site-btn sb-white">THÊM VÀO GIỎ</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">
@@ -53,7 +53,7 @@
 	<section class="top-letest-product-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>LATEST PRODUCTS</h2>
+				<h2>SẢN PHẨM MỚI NHẤT</h2>
 			</div>
 			<div class="product-slider owl-carousel">
 				<div class="product-item">
@@ -133,7 +133,7 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>BROWSE TOP SELLING PRODUCTS</h2>
+				<h2>GIỚI THIỆU SẢN PHẨM BÁN CHẠY NHẤT</h2>
 			</div>
 			<ul class="product-filter-menu">
 				<li><a href="#">TOPS</a></li>
@@ -270,7 +270,7 @@
 				</div>
 			</div>
 			<div class="text-center pt-5">
-				<button class="site-btn sb-line sb-dark">LOAD MORE</button>
+				<button class="site-btn sb-line sb-dark">TẢI THÊM</button>
 			</div>
 		</div>
 	</section>
