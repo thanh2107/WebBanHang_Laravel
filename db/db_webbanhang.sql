@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `chi_tiet_hd`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `chi_tiet_hd` (
   `id_chi_tiet_HD` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_hoa_don` int(10) unsigned NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `chi_tiet_hd` (
   KEY `fk_chitethd_sanpham_idx` (`id_san_pham`),
   CONSTRAINT `fk_chitethd_hoadon` FOREIGN KEY (`id_hoa_don`) REFERENCES `hoa_don` (`id_hoa_don`),
   CONSTRAINT `fk_chitethd_sanpham` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id_san_pham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `hoa_don`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `hoa_don` (
   `id_hoa_don` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_khach_hang` int(11) unsigned DEFAULT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `hoa_don` (
   PRIMARY KEY (`id_hoa_don`),
   KEY `fk_hoadon_khachhang_idx` (`id_khach_hang`),
   CONSTRAINT `fk_hoadon_khachhang` FOREIGN KEY (`id_khach_hang`) REFERENCES `khach_hang` (`id_khach_hang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +84,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `khach_hang`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `khach_hang` (
   `id_khach_hang` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ten_kh` varchar(100) NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE `khach_hang` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_khach_hang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `loai_san_pham`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `loai_san_pham` (
   `id_loai_san_pham` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tên_LSP` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `loai_san_pham` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_loai_san_pham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `nguoi_dung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `nguoi_dung` (
   `id_nguoi_dung` int(10) NOT NULL,
   `ten_nguoi_dung` varchar(255) NOT NULL,
@@ -152,7 +152,7 @@ CREATE TABLE `nguoi_dung` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_nguoi_dung`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `san_pham`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `san_pham` (
   `id_san_pham` int(10) unsigned NOT NULL,
   `ten_san_pham` varchar(100) DEFAULT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE `san_pham` (
   PRIMARY KEY (`id_san_pham`),
   KEY `fk_sanpham_loaisanpham_idx` (`id_loai_san_pham`),
   CONSTRAINT `fk_sanpham_loaisanpham` FOREIGN KEY (`id_loai_san_pham`) REFERENCES `loai_san_pham` (`id_loai_san_pham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +204,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tin_tuc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `tin_tuc` (
   `id_tin_tuc` int(10) NOT NULL,
   `tieu_de` varchar(200) NOT NULL,
@@ -213,7 +213,7 @@ CREATE TABLE `tin_tuc` (
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id_tin_tuc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,4 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-15 18:17:00
+-- Dump completed on 2020-09-15 18:40:03

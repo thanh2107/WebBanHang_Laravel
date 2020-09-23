@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-protected $table = 'nguoi_dung'
-class nguoidung extends Model
+
+class NguoiDung extends Model
 {
-    use HasFactory;
+   protected $table = "nguoi_dung";
 }

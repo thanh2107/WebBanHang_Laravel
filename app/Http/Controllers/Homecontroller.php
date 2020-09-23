@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Homecontroller extends Controller
+class HomeController extends Controller
 {
-    //
+  
+    public function getIndex(){
+
+    	return view('page.trangchu');
+    }
 }

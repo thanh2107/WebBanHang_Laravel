@@ -16,9 +16,10 @@
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    $data = DB::table('nguoi_dung')->get();
-    $colom = DB::table('nguoi_dung')->select('MatKhau')->get();
- 
-    print_r($data);
-});
+
+	Route::get('index',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getIndex',
+		'as'=>'trang-chu'
+	]);
+
