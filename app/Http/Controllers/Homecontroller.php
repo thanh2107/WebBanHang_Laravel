@@ -23,4 +23,16 @@ class HomeController extends Controller
 
     	return view('page.lienhe');
     }
+     public function getGioHang(){
+
+        return view('page.giohang');
+    }
+     public function getThanhToan(){
+
+        return view('page.thanhtoan');
+    }
+    public function getLogin(){
+
+        return view('page.login_register');
+    }
 }

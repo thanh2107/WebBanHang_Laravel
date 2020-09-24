@@ -2137,6 +2137,81 @@ ol {
 }
 
 /* ----------------
+  login Page
+---------------------*/
+
+
+.form-login .form-register{
+	background: none;
+    padding: 0;
+    max-width: initial;
+    text-align: inherit;
+    margin: 0;
+}
+
+.form-login h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+.form-register h2 {
+	 font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+.row-login {
+
+    margin-bottom: 10px;
+    line-height: 2;
+    display: block;
+}
+.row-login button{
+	height: 40px;
+
+}
+.required{
+    color: #fc655e;
+}
+.input-login{
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+}
+
+input[type="submit"], button, a.button, .jas-ajax-load a {
+    cursor: pointer;
+    border: 2px solid;
+    padding: 0 34px;
+    background: #fff;
+    color: #222;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+  
+}
+.form-login span.inline {
+    display: block;
+}
+span.style-checkbox{
+
+	margin-top: 10px;
+}
+.style-checkbox {
+    display: inline-block;
+    position: relative;
+}
+.style-checkbox input{ size: 10px;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+}
+.lost_password{
+	margin-bottom: 0;
+}
+/* ----------------
   Responsive
 ---------------------*/
 

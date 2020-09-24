@@ -35,8 +35,25 @@ Route::get('san-pham',[
 		'uses'=>'App\Http\Controllers\HomeController@getSanPham',
 		'as'=>'san-pham'
 	]);
+
 Route::get('lien-he',[
 		
 		'uses'=>'App\Http\Controllers\HomeController@getLienHe',
 		'as'=>'lien-he'
+	]);
+
+Route::get('gio-hang',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getGioHang',
+		'as'=>'gio-hang'
+	]);
+Route::get('thanh-toan',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getThanhToan',
+		'as'=>'thanh-toan'
+	]);
+Route::get('Login',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getLogin',
+		'as'=>'login'
 	]);

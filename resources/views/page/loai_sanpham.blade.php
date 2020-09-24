@@ -5,13 +5,13 @@
     <div class="container">
         <h4>CAtegory PAge</h4>
         <div class="site-pagination">
-            <a href="">Home</a> /
+            <a href="{{route('trang-chu')}}">Home</a> /
             <a href="">Shop</a> /
         </div>
     </div>
 </div>
 <!-- Page info end -->
-<!-- Category section -->
+    
 <section class="category-section spad">
     <div class="container">
         <div class="row">

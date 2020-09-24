@@ -21,14 +21,14 @@
 						<div class="user-panel">
 							<div class="up-item">
 								<i class="flaticon-profile"></i>
-								<a href="#">Đăng nhập</a> hoặc <a href="#">tạo tài khoản</a>
+								<a href="{{route('login')}}">Đăng nhập hoặc tạo tài khoản</a> 
 							</div>
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="flaticon-bag"></i>
 									<span>0</span>
 								</div>
-								<a href="#">Giỏ hàng</a>
+								<a href="{{route('gio-hang')}}">Giỏ hàng</a>
 							</div>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 						</ul>
 					</li>
 					<li><a href="#">Phụ kiện
-						<span class="new">New</span>
+						<span class="new">Mới</span>
 					</a></li>
 					<li><a href="#">Cửa hàng</a>
 						<ul class="sub-menu">
