@@ -22,7 +22,7 @@
 					<p>Chúng tôi muốn nghe từ bạn về dịch vụ khách hàng, hàng hóa, trang web của chúng tôi hoặc bất kỳ chủ đề nào bạn muốn chia sẻ với chúng tôi. Nhận xét và đề xuất của bạn được đánh giá cao. Hãy hoàn thành mẫu đơn dưới dây.</p>
 					<p>1 Nguyễn Thị Minh Khai, Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh</p>
 					<p>+84 99999999</p>
-					<p>divisima@email.com</p>
+					<p>loriem@email.com</p>
 					<div class="contact-social">
 						<a href="#"><i class="fa fa-pinterest"></i></a>
 						<a href="#"><i class="fa fa-facebook"></i></a>

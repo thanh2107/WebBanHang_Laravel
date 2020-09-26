@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slide;
 
 class HomeController extends Controller
 {
   
     public function getIndex(){
-
-    	return view('page.trangchu');
+        $slide = Slide:: all();
+    	//return view('page.trangchu',['slide' => $slide]);
+        return view('page.trangchu',compact('slide'));
     }
      public function getLoaiSp(){
 

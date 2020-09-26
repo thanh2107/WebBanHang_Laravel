@@ -5,42 +5,27 @@
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
-			<div class="hs-item set-bg" data-setbg="resources/img/bg.jpg">
+			@foreach($slide as $sl)
+			<div class="hs-item set-bg" data-setbg="resources/img/slide/{{$sl->img}}">
 				<div class="container">
 					<div class="row">
 						<div class="col-xl-6 col-lg-7 text-white">
-							<span>New Arrivals</span>
-							<h2>denim jackets</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+							<span>Hàng mới</span>
+							<h2>{{$sl->tieu_de}}</h2>
+							<p>{{$sl->noi_dung}} </p>
 							<a href="#" class="site-btn sb-line">KHÁM PHÁ</a>
 							<a href="#" class="site-btn sb-white">THÊM VÀO GIỎ</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">
 						<span>from</span>
-						<h2>$29</h2>
+						<h2>${{$sl->gia}}</h2>
 						<p>SHOP NOW</p>
 					</div>
 				</div>
 			</div>
-			<div class="hs-item set-bg" data-setbg="resources/img/bg-2.jpg">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-6 col-lg-7 text-white">
-							<span>New Arrivals</span>
-							<h2>denim jackets</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-							<a href="#" class="site-btn sb-line">KHÁM PHÁ</a>
-							<a href="#" class="site-btn sb-white">THÊM VÀO GIỎ</a>
-						</div>
-					</div>
-					<div class="offer-card text-white">
-						<span>from</span>
-						<h2>$29</h2>
-						<p>SHOP NOW</p>
-					</div>
-				</div>
-			</div>
+			@endforeach
+
 		</div>
 		<div class="container">
 			<div class="slide-num-holder" id="snh-1"></div>

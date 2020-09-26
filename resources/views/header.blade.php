@@ -8,12 +8,13 @@
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
 						<a href="index" class="site-logo">
-							<img src="resources/img/logo.png" alt="">
+							<img src="resources/img/logo12.png" alt="">
+							
 						</a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
 						<form class="header-search-form">
-							<input type="text" placeholder="Tìm kiếm trong divisima ....">
+							<input type="text" placeholder="Tìm kiếm trong loriem ....">
 							<button><i class="flaticon-search"></i></button>
 						</form>
 					</div>

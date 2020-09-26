@@ -3,9 +3,9 @@
 
 <!-- Footer section --> <section class="footer-section"> <div
 class="container"> <div class="footer-logo text-center"> <a
-href="index.html"><img src="resources/img/logo-light.png" alt=""></a> </div>
+href="index.html"><img src="resources/img/logo21.png" alt=""></a> </div>
 <div class="row"> <div class="col-lg-3 col-sm-6"> <div class="footer-widget
-about-widget"> <h2>DIVISIMA</h2> <p>“Hãy diện đồ như thể bạn chuẩn bị đi gặp
+about-widget"> <h2>LORIEM</h2> <p>“Hãy diện đồ như thể bạn chuẩn bị đi gặp
 kẻ thù đáng ghét nhất của mình” – Kimora Lee </p> <img
 src="resources/img/cards.png" alt=""> </div> </div> <div class="col-lg-3
 col-sm-6"> <div class="footer-widget about-widget"> <h2>CSKH</h2> <ul> <li><a
@@ -33,7 +33,7 @@ href="">Theo Dõi Đơn Hàng</a></li> <li><a href="">Hướng Dẫn Chọn Size
 						<h2>THÔNG TIN</h2>
 						<div class="con-info">
 							<span>C.</span>
-							<p>CÔNG TY TNHH DIVISIMA VN </p>
+							<p>CÔNG TY TNHH LORIEM VN </p>
 						</div>
 						<div class="con-info">
 							<span>B.</span>
@@ -45,7 +45,7 @@ href="">Theo Dõi Đơn Hàng</a></li> <li><a href="">Hướng Dẫn Chọn Size
 						</div>
 						<div class="con-info">
 							<span>E.</span>
-							<p>divisima@email.com</p>
+							<p>loriem@email.com</p>
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@ href="">Theo Dõi Đơn Hàng</a></li> <li><a href="">Hướng Dẫn Chọn Size
 				</div>
 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
-<p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Powered <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Divisima</a></p>
+<p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Powered <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Loriem</a></p>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 			</div>

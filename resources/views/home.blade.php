@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Thời trang nữ Divisima</title>
+	<title>Thời trang nữ Loriem</title>
 	<meta charset="UTF-8">
-	<meta name="description" content=" Divisima | eCommerce Template">
-	<meta name="keywords" content="divisima, eCommerce, creative, html">
+	<meta name="description" content=" Loriem | eCommerce Template">
+	<meta name="keywords" content="loriem, eCommerce, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="resources/img/favicon.ico" rel="shortcut icon"/>
