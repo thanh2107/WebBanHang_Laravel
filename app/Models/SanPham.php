@@ -12,8 +12,5 @@ class SanPham extends Model
 
     	return $this->belongsTo('App\Models\LoaiSP','id_loai_san_pham','id_san_pham');
     }
-     public function chi_tiet_hd(){
-
-    	return $this->hasMany('App\Models\ChiTietHD','id_san_pham','id_san_pham');
-    }
+    
 }

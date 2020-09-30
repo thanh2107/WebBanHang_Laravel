@@ -43,7 +43,6 @@
 					<li><a href= "{{route('trang-chu')}}">Trang chủ</a></li>
 					<li><a href="#">Đồng giá</a>
 						<ul class="sub-menu">
-							<li><a href="checkout.html">Đồng giá 39k-49k-59k</a></li>
 							<li><a href="product.html">Đồng giá 99k</a></li>
 							<li><a href="category.html">Đồng giá 149k</a></li>
 							<li><a href="cart.html">Đồng giá 199k</a></li>
@@ -71,7 +70,7 @@
 						</ul>
 					</li>
 					<li><a href="#">Sự kiện</a></li>
-					<li><a href="#">Review</a></li>
+					<li><a href="#">Reviews</a></li>
 					<li><a href="{{route('lien-he')}}">Liên hệ</a></li>
 				</ul>
 			</div>
