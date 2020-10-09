@@ -12,10 +12,11 @@ class HomeController extends Controller
     public function getIndex(){
         $slide = Slide:: all();
         $new_product = SanPham::where('moi',1)->paginate(5); /* chỉ lấy ra 5 sản phẩm mới */
+        $best_selling = SanPham::orderby('da_ban','desc')->get();
        // $new_product = SanPham::where('new',1)->get();
        // dd($new_product);
     	//return view('page.trangchu',['slide' => $slide]);
-        return view('page.trangchu',compact('slide','new_product'));
+        return view('page.trangchu',compact('slide','new_product','best_selling'));
     }
      public function getLoaiSp(){
 
