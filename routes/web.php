@@ -24,16 +24,16 @@
 	]);
 
 
-Route::get('loai-san-pham',[
+Route::get('loai-san-pham/{loaisp}',[
 		
 		'uses'=>'App\Http\Controllers\HomeController@getLoaiSp',
 		'as'=>'loai-san-pham'
 	]);
 
-Route::get('san-pham',[
+Route::get('chi-tiet-san-pham/{id}',[
 		
-		'uses'=>'App\Http\Controllers\HomeController@getSanPham',
-		'as'=>'san-pham'
+		'uses'=>'App\Http\Controllers\HomeController@getChiTiet',
+		'as'=>'chi-tiet-san-pham'
 	]);
 
 Route::get('lien-he',[

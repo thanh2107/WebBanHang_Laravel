@@ -43,19 +43,17 @@
 					<li><a href= "{{route('trang-chu')}}">Trang chủ</a></li>
 					<li><a href="#">Đồng giá</a>
 						<ul class="sub-menu">
-							<li><a href="product.html">Đồng giá 99k</a></li>
-							<li><a href="category.html">Đồng giá 149k</a></li>
-							<li><a href="cart.html">Đồng giá 199k</a></li>
+							@foreach($dong_gia as $dg)
+							<li><a href="product.html">{{$dg->ten_donggia}}</a></li>
+							@endforeach
 						</ul>	
 					</li>
 
-					<li><a href="{{route('loai-san-pham')}}">Sản phẩm</a>
+					<li><a href="#">Sản phẩm</a>
 						<ul class="sub-menu">
-							<li><a href="#">Sneakers</a></li>
-							<li><a href="#">Sandals</a></li>
-							<li><a href="#">Formal Shoes</a></li>
-							<li><a href="#">Boots</a></li>
-							<li><a href="#">Flip Flops</a></li>
+							@foreach($loai_sp as $loai)
+							<li><a href="{{route('loai-san-pham',$loai->id_loai_san_pham)}}">{{$loai->ten_LSP}}</a></li>
+							@endforeach
 						</ul>
 					</li>
 					<li><a href="#">Phụ kiện

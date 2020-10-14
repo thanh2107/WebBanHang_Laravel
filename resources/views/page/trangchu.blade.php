@@ -42,10 +42,10 @@
 			<div class="section-title">
 				<h2>SẢN PHẨM MỚI NHẤT</h2>
 			</div>
-			<d1iv class="product-slider owl-carousel">
+			<div class="product-slider owl-carousel">
 				@foreach($new_product as $new) 
 				<div class="product-item">
-					<div class="pi-pic">
+					<div class="pi-pic" onclick="window.location='{{route('chi-tiet-san-pham',$new->id_san_pham)}}';">
 						<div class="tag-new">New</div>
 						<img src="resources/img/product/{{$new->hinh}}" alt="">
 						<div class="pi-links">
@@ -55,7 +55,7 @@
 					</div>
 					<div class="pi-text">
 						<h6> {{ number_format($new->gia)}}₫</h6>
-						<p>{{$new->ten_san_pham}}</p>
+						<a href="{{route('chi-tiet-san-pham',$new->id_san_pham)}}"> <p>{{$new->ten_san_pham}}</p></a>
 					</div>
 				</div>
 				@endforeach
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- letest product section end -->
+	<!-- letest product section end sadsad-->
 
 
 
@@ -74,20 +74,17 @@
 				<h2>GIỚI THIỆU SẢN PHẨM BÁN CHẠY NHẤT</h2>
 			</div>
 			<ul class="product-filter-menu">
-				<li><a href="#">TOPS</a></li>
-				<li><a href="#">JUMPSUITS</a></li>
-				<li><a href="#">LINGERIE</a></li>
-				<li><a href="#">JEANS</a></li>
-				<li><a href="#">DRESSES</a></li>
-				<li><a href="#">COATS</a></li>
-				<li><a href="#">JUMPERS</a></li>
+				@foreach($loai as $ls)
+				<li><a href="#">{{$ls->ten_LSP}}</a></li>
+				@endforeach
 				<li><a href="#">LEGGINGS</a></li>
 			</ul>							{{-- <div class="tag-sale">ON SALE</div> --}}
 			<div class="row">
 				@foreach($best_selling as $sl)
 				<div class="col-lg-3 col-sm-6"> 
 					<div class="product-item">
-						<div class="pi-pic">
+						<div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sl->id_san_pham)}}';">
+								
 							@if($sl->gia_khuyen_mai > 0)
 							<div class="tag-sale">ON SALE</div>
 							@endif
@@ -96,6 +93,7 @@
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
+						
 						</div>
 						<div class="pi-text">
 							

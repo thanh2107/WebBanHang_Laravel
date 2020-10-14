@@ -7,7 +7,7 @@
 			<h4>LIÊN HỆ</h4>
 			<div class="site-pagination">
 				<a href="{{route('trang-chu')}}">Home</a> /
-				<a href="">Contact</a>
+				<a href="{{route('lien-he')}}">Contact</a>
 			</div>
 		</div>
 	</div>

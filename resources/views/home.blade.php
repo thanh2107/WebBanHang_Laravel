@@ -3,6 +3,7 @@
 <html lang="zxx">
 <head>
 	<title>Thời trang nữ Loriem</title>
+	<base href="{{asset(' ')}}"/>
 	<meta charset="UTF-8">
 	<meta name="description" content=" Loriem | eCommerce Template">
 	<meta name="keywords" content="loriem, eCommerce, creative, html">

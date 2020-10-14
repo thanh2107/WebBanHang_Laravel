@@ -18,16 +18,16 @@
 	<section class="product-section">
 		<div class="container">
 			<div class="back-link">
-				<a href="{{route('loai-san-pham')}}"> &lt;&lt; Trở lại danh mục</a>
+				<a href="#"> &lt;&lt; Trở lại danh mục</a>
 			</div>
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="product-pic-zoom">
-						<img class="product-big-img" src="resources/img/single-product/1.jpg" alt="">
+						<img class="product-big-img" src="resources/img/product/{{$sanpham->hinh}}" alt="">
 					</div>
 					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
 						<div class="product-thumbs-track">
-							<div class="pt active" data-imgbigurl="resources/img/single-product/1.jpg"><img src="resources/img/single-product/thumb-1.jpg" alt=""></div>
+							<div class="pt active" data-imgbigurl="resources/img/product/{{$sanpham->hinh}}"><img src="resources/img/product/{{$sanpham->hinh}}" alt=""></div>
 							<div class="pt" data-imgbigurl="resources/img/single-product/2.jpg"><img src="resources/img/single-product/thumb-2.jpg" alt=""></div>
 							<div class="pt" data-imgbigurl="resources/img/single-product/3.jpg"><img src="resources/img/single-product/thumb-3.jpg" alt=""></div>
 							<div class="pt" data-imgbigurl="resources/img/single-product/4.jpg"><img src="resources/img/single-product/thumb-4.jpg" alt=""></div>
@@ -35,8 +35,14 @@
 					</div>
 				</div>
 				<div class="col-lg-6 product-details">
-					<h2 class="p-title">White peplum top</h2>
-					<h3 class="p-price">$39.90</h3>
+					<h2 class="p-title">{{$sanpham->ten_san_pham}}</h2>
+					{{-- <h3 class="p-price">{{$sanpham->gia}}</h3> --}}
+					@if($sanpham->gia_khuyen_mai > 0)
+								<h3 class="p-price1 " style="margin-bottom: 0">{{number_format($sanpham->gia_khuyen_mai)}}₫</h3>
+								<span class="sale1">{{number_format($sanpham->gia)}}₫</span>
+							@else
+								<h3 class="p-price">{{number_format($sanpham->gia)}}₫</h3>
+							@endif
 					<h4 class="p-stock">Available: <span>In Stock</span></h4>
 					<div class="p-rating">
 						<i class="fa fa-star-o"></i>
@@ -50,47 +56,28 @@
 					</div>
 					<div class="fw-size-choose">
 						<p>Size</p>
+						@foreach($chitietsp as $sz)
 						<div class="sc-item">
-							<input type="radio" name="sc" id="xs-size">
-							<label for="xs-size">32</label>
+							<input type="radio" name="sc" id="{{$sz->size_sp->ten_size}}">
+							<label for="{{$sz->size_sp->ten_size}}">{{$sz->size_sp->ten_size}}</label>
 						</div>
-						<div class="sc-item">
-							<input type="radio" name="sc" id="s-size">
-							<label for="s-size">34</label>
-						</div>
-						<div class="sc-item">
-							<input type="radio" name="sc" id="m-size" checked="">
-							<label for="m-size">36</label>
-						</div>
-						<div class="sc-item">
-							<input type="radio" name="sc" id="l-size">
-							<label for="l-size">38</label>
-						</div>
-						<div class="sc-item disable">
-							<input type="radio" name="sc" id="xl-size" disabled>
-							<label for="xl-size">40</label>
-						</div>
-						<div class="sc-item">
-							<input type="radio" name="sc" id="xxl-size">
-							<label for="xxl-size">42</label>
-						</div>
+						@endforeach
+					
 					</div>
 					<div class="quantity">
-						<p>Quantity</p>
+						<p>Số lượng</p>
                         <div class="pro-qty"><input type="text" value="1"></div>
                     </div>
-					<a href="#" class="site-btn">SHOP NOW</a>
+					<a href="#" class="site-btn">Thêm vào giỏ hàng</a>
 					<div id="accordion" class="accordion-area">
 						<div class="panel">
 							<div class="panel-header" id="headingOne">
-								<button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">information</button>
+								<button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Mô tả</button>
 							</div>
 							<div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
-									<p>Approx length 66cm/26" (Based on a UK size 8 sample)</p>
-									<p>Mixed fibres</p>
-									<p>The Model wears a UK size 8/ EU size 36/ US size 4 and her height is 5'8"</p>
+									<p>{{$sanpham ->mo_ta}}</p>
+								
 								</div>
 							</div>
 						</div>
@@ -102,18 +89,27 @@
 								<div class="panel-body">
 									<img src="resources/img/cards.png" alt="">
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+
 								</div>
 							</div>
 						</div>
 						<div class="panel">
 							<div class="panel-header" id="headingThree">
-								<button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">shipping & Returns</button>
+								<button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Phí vận chuyển & Hoàn trả</button>
 							</div>
 							<div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 								<div class="panel-body">
-									<h4>7 Days Returns</h4>
-									<p>Cash on Delivery Available<br>Home Delivery <span>3 - 4 days</span></p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+
+									<h4>Miễn phí vận chuyển</h4>
+									<p>
+                    Giao hàng miễn phí với mức giá cố định cho các đơn hàng trên 99.000₫
+                     </span></p>
+									<p>Trả lại hoặc trao đổi trong vòng 30 ngày kể từ ngày giao hàng.<br>
+									Yêu cầu:<br>
+								1. Các mặt hàng nhận được trong vòng 30 ngày kể từ ngày giao hàng.<br>
+								2. Các mặt hàng nhận được không sử dụng, không bị hư hỏng và trong gói ban đầu.<br>
+								3. Phí vận chuyển trở lại được trả bởi người mua.
+							</p>
 								</div>
 							</div>
 						</div>
@@ -162,7 +158,7 @@
 						</div>
 					</div>
 					<div class="pi-text">
-						<h6>$35,00</h6>
+						<h6>{{$sanpham->gia}}/h6>
 						<p>Black and White Stripes Dress</p>
 					</div>
 				</div>

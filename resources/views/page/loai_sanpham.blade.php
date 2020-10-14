@@ -3,56 +3,51 @@
 <!-- Page info -->
 <div class="page-top-info">
     <div class="container">
-        <h4>CAtegory PAge</h4>
+        <h4>DANH MỤC</h4>
         <div class="site-pagination">
-            <a href="{{route('trang-chu')}}">Home</a> /
-            <a href="">Shop</a> /
+            <a href="{{route('trang-chu')}}">Trang chủ</a> / Trang phục / 
+            <a href="{{route('loai-san-pham',$tenloai->id_loai_san_pham)}}">{{$tenloai->ten_LSP}}</a> /
         </div>
     </div>
 </div>
 <!-- Page info end -->
-    
+
 <section class="category-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 order-2 order-lg-1">
                 <div class="filter-widget">
-                    <h2 class="fw-title">Categories</h2>
+                    <h2 class="fw-title">Danh mục</h2>
                     <ul class="category-menu">
-                        <li><a href="#">Woman wear</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Midi Dresses <span>(2)</span></a></li>
-                                <li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-                                <li><a href="#">Prom Dresses<span>(36)</span></a></li>
-                                <li><a href="#">Little Black Dresses <span>(27)</span></a></li>
-                                <li><a href="#">Mini Dresses<span>(19)</span></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Man Wear</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Midi Dresses <span>(2)</span></a></li>
-                                <li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-                                <li><a href="#">Prom Dresses<span>(36)</span></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Children</a></li>
-                        <li><a href="#">Bags & Purses</a></li>
-                        <li><a href="#">Eyewear</a></li>
-                        <li><a href="#">Footwear</a></li>
+                        @foreach($loai as $ls)
+                        @php
+                        $count =0;
+                        @endphp
+                        <li><a href="{{route('loai-san-pham',$ls->id_loai_san_pham)}}">{{$ls ->ten_LSP}}
+                            @foreach($sanpham as $sp)
+                            @if($sp->id_loai_san_pham == $ls->id_loai_san_pham)
+                            @php
+                            $count +=1;
+                            @endphp
+                            @endif
+                            @endforeach
+                            <span>{{$count}}</span>
+                        </a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="filter-widget mb-0">
-                    <h2 class="fw-title">refine by</h2>
+                    <h2 class="fw-title">Sắp xếp giá cả (VND)</h2>
                     <div class="price-range-wrap">
-                        <h4>Price</h4>
-                        <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="270">
-                            <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
-                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;">
+                        <h4>Giá</h4>
+                        <div class="price-range ui-spider ui-corner-all ui-spider-horizontal ui-widget ui-widget-content" data-min="50" data-max="2000000">
+                            <div class="ui-spider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+                            <span tabindex="0" class="ui-spider-handle ui-corner-all ui-state-default" style="left: 0%;">
                             </span>
-                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;">
+                            <span tabindex="0" class="ui-spider-handle ui-corner-all ui-state-default" style="left: 100%;">
                             </span>
                         </div>
-                        <div class="range-slider">
+                        <div class="range-spider">
                             <div class="price-input">
                                 <input type="text" id="minamount">
                                 <input type="text" id="maxamount">
@@ -96,7 +91,7 @@
                         <div class="cs-item">
                             <input type="radio" name="cs" id="blue-color" checked="">
                             <label class="cs-blue" for="blue-color">
-                                <span>(29)</span>
+
                             </label>
                         </div>
                     </div>
@@ -130,208 +125,46 @@
                         </div>
                     </div>
                 </div>
-                <div class="filter-widget">
-                    <h2 class="fw-title">Brand</h2>
-                    <ul class="category-menu">
-                        <li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>
-                        <li><a href="#">Asos<span>(56)</span></a></li>
-                        <li><a href="#">Bershka<span>(36)</span></a></li>
-                        <li><a href="#">Missguided<span>(27)</span></a></li>
-                        <li><a href="#">Zara<span>(19)</span></a></li>
-                    </ul>
-                </div>
+              
             </div>
             <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
                 <div class="row">
+                    @foreach($sp_theoloai as $sp)
                     <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <div class="tag-sale">ON SALE</div>
-                                <img src="resources/img/product/6.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Black and White Stripes Dress</p>
+                     <div class="product-item">
+                        <div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sp->id_san_pham)}}';">
+                            @if($sp->gia_khuyen_mai != 0)
+                            <div class="tag-sale">ON SALE</div>
+                            @endif
+                            <img src="resources/img/product/{{$sp->hinh}}" alt="">
+                            <div class="pi-links">
+                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/7.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top</p>
-                            </div>
+                        <div class="pi-text">
+
+                            @if($sp->gia_khuyen_mai > 0)
+                            <h6 class="sale">{{number_format($sp->gia_khuyen_mai)}}₫</h6>
+                            <p>{{$sp->ten_san_pham}} </p>
+                            <br>
+                            <span>{{number_format($sp->gia)}}₫</span>
+                            @else
+                            <h6>{{number_format($sp->gia)}}₫</h6>
+                            <p>{{$sp->ten_san_pham}} </p>
+                            @endif
+                            
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/8.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/10.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Black and White Stripes Dress</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/11.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/12.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/5.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/9.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/1.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <div class="tag-new">new</div>
-                                <img src="resources/img/product/2.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Black and White Stripes Dress</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/3.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="resources/img/product/4.jpg" alt="">
-                                <div class="pi-links">
-                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="pi-text">
-                                <h6>$35,00</h6>
-                                <p>Flamboyant Pink Top </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center w-100 pt-3">
-                        <button class="site-btn sb-line sb-dark">LOAD MORE</button>
-                    </div>
+                </div>
+                @endforeach
+                <div class="text-center w-100 pt-3">
+                    <button class="site-btn sb-line sb-dark">LOAD MORE</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </section>
 <!-- Category section end -->
 @endsection

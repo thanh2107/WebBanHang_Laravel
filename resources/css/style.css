@@ -774,15 +774,22 @@ ol {
 	position: relative;
 	display: block;
 }
-.product-item .pi-text span{	
+.product-item .pi-text span {	
 	font-size: 12px;
 	float: right;
+	text-decoration: line-through;
+}
+.product-details .sale1 {
+
+font-size: 12px;
 	text-decoration: line-through;
 }
 .product-item .pi-text .sale{
  	color: #F51167;
 
 }
+
+.pi-pic {cursor: pointer;}
 
 .product-item .tag-new,
 .product-item .tag-sale {
@@ -1169,7 +1176,7 @@ ol {
 
 .page-top-info {
 	background: #f8f7f7;
-	padding: 60px 0 70px;
+	padding: 30px 0 40px;
 }
 
 .page-top-info h4 {
@@ -1458,7 +1465,7 @@ ol {
 ------------------*/
 
 .product-section {
-	padding-top: 70px;
+	padding-top: 20px;
 	padding-bottom: 65px;
 }
 
@@ -1518,7 +1525,12 @@ ol {
 	font-weight: 700;
 	margin-bottom: 20px;
 }
-
+.product-details .p-price1 {
+	font-size: 24px;
+	color: #F51167;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
 .product-details .p-stock {
 	font-size: 12px;
 	color: #000;
