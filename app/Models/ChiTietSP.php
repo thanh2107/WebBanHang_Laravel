@@ -19,7 +19,7 @@ class ChiTietSP extends Model
     }
      public function mau_sp(){
 
-    	return $this->belongsTo('App\Models\Mau_SP','id_mau','id');
+    	return $this->belongsTo('App\Models\MauSP','id_mau','id');
     }
      public function chi_tiet_hd(){
 

@@ -28,9 +28,26 @@
 					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
 						<div class="product-thumbs-track">
 							<div class="pt active" data-imgbigurl="resources/img/product/{{$sanpham->hinh}}"><img src="resources/img/product/{{$sanpham->hinh}}" alt=""></div>
-							<div class="pt" data-imgbigurl="resources/img/single-product/2.jpg"><img src="resources/img/single-product/thumb-2.jpg" alt=""></div>
-							<div class="pt" data-imgbigurl="resources/img/single-product/3.jpg"><img src="resources/img/single-product/thumb-3.jpg" alt=""></div>
-							<div class="pt" data-imgbigurl="resources/img/single-product/4.jpg"><img src="resources/img/single-product/thumb-4.jpg" alt=""></div>
+							@if(!empty($hinh))
+					
+								@if(!empty($hinh->hinh_sp->h2))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}} "alt=""></div>
+								@endif
+								@if(!empty($hinh->hinh_sp->h3))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}} "alt=""></div>
+								@endif
+								@if(!empty($hinh->hinh_sp->h4))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}} "alt=""></div>
+								@endif
+								@if(!empty($hinh->hinh_sp->h5))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}} "alt=""></div>
+								@endif
+								@if(!empty($hinh->hinh_sp->h6))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}} "alt=""></div>
+								@endif
+
+							@endif
+				
 						</div>
 					</div>
 				</div>
@@ -56,13 +73,14 @@
 					</div>
 					<div class="fw-size-choose">
 						<p>Size</p>
-						@foreach($chitietsp as $sz)
-						<div class="sc-item">
-							<input type="radio" name="sc" id="{{$sz->size_sp->ten_size}}">
-							<label for="{{$sz->size_sp->ten_size}}">{{$sz->size_sp->ten_size}}</label>
-						</div>
-						@endforeach
-					
+						@if(!empty($chitietsp))
+							@foreach($chitietsp as $sz)
+							<div class="sc-item">
+								<input type="radio" name="sc" id="{{$sz->size_sp->ten_size}}">
+								<label for="{{$sz->size_sp->ten_size}}">{{$sz->size_sp->ten_size}}</label>	
+							</div>
+							@endforeach
+						@endif
 					</div>
 					<div class="quantity">
 						<p>Số lượng</p>

@@ -57,3 +57,15 @@ Route::get('Login',[
 		'uses'=>'App\Http\Controllers\HomeController@getLogin',
 		'as'=>'login'
 	]);
+
+Route::post('Login',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@postLogin',
+		'as'=>'login'
+	]);
+
+Route::post('register',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@postRegister',
+		'as'=>'register'
+	]);

@@ -6,7 +6,7 @@
 		<h4>Đăng nhập</h4>
 		<div class="site-pagination">
 			<a href="{{route('trang-chu')}}">Home</a> /
-			<a href="">Login</a> 
+			<a href="{{route('login')}}">Login</a> 
 		</div>
 	</div>
 </div>
@@ -16,15 +16,28 @@
 <div class="mb-5 mt-5 ">
 	<div class="container">
 		<div class="row">
+			
 			<div class="col-sm-6" >
 				<div class="form-login">
 					<h2>Đăng nhập</h2>
-					<form>
+					<form  id="login"action="{{route('login')}}" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="_token" value="{{csrf_token()}}">
+						@if(count($errors)>0 && Session::get('last_auth_attempt') == 'login')
+							<div class="alert alert-danger">
+								@foreach($errors->all() as $err)
+								{{$err}}<br>
+								@endforeach
+							</div>
+						@endif
+						@if(Session::has('flag'))
+						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}
+						</div>
+						@endif
 						<p class="row-login"> 
-							<label>Tên đặng nhập hoặc email
+							<label>Email or username
 								<span class="required">*</span>
 							</label>
-							<input class="input-login" type="text" name="username" id="username">
+							<input class="input-login" type="text" name="email" id="email">
 						</p>	
 						<p class="row-login"> 
 							<label>Mật khẩu
@@ -44,25 +57,53 @@
 							</span>
 						</p>
 						<p class="woocommerce-LostPassword lost_password">
-							<a href="https://bomsister.vn/my-account/lost-password/">Quên mật khẩu?</a>
+							<a href="">Quên mật khẩu?</a>
 						</p>
-
-
 					</form>
 				</div>
-
-
 			</div>
 			<div class="col-sm-6" >
 				<div class="form-register">
 					<h2>Đăng kí</h2>
-					<form>
+					<form id="register" action="{{route('register')}}" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="_token" value="{{csrf_token()}}">
+								
+								@if(count($errors)>0 && Session::get('last_auth_attempt') == 'register')
+							<div class="alert alert-danger">
+								@foreach($errors->all() as $err)
+								{{$err}}<br>
+								@endforeach
+
+							</div>
+							@endif
+						@if(Session::has('thanhcong'))
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+						@endif
 						<p class="row-login"> 
-							<label>Tên đặng nhập hoặc email
+							<label>Email
+								<span class="required">*</span>
+							</label>
+							<input class="input-login" type="text" name="email" id="email">
+						</p>	
+						<p class="row-login"> 
+							<label>Username
 								<span class="required">*</span>
 							</label>
 							<input class="input-login" type="text" name="username" id="username">
 						</p>	
+						<p class="row-login"> 
+							<label>Địa chỉ
+								<span class="required">*</span>
+							</label>
+							<input class="input-login" type="text" name="address" id="address">
+						</p>
+							<p class="row-login"> 
+							<label>Số điện thoại
+								<span class="required">*</span>
+							</label>
+							<input class="input-login" type="text" name="phone" id="phone">
+						</p>	
+
 						<p class="row-login"> 
 							<label>Mật khẩu
 								<span class="required">*</span>
@@ -76,7 +117,7 @@
 							<input class="input-login" type="password" name="confirmpassword" id="confirmpassword">
 						</p>
 						<p class="row-login">
-							<button type="submit" class="float-right m-0" name="login" value="Log in">Đăng ký</button>
+							<button type="submit" class="float-right m-0" name="register" value="register">Đăng ký</button>
 						</p>
 						
 
