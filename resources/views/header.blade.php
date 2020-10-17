@@ -21,15 +21,30 @@
 					<div class="col-xl-4 col-lg-5">
 						<div class="user-panel">
 							<div class="up-item">
+								
+								@if(Auth::check())
+								<ul style="" class="main-menu">
+									<li><i class="flaticon-profile"></i></li>
+									<li><a href="">Chào bạn {{Auth::user()->name}}</a> 
+										<ul class="sub-menu">
+											<li><a href="{{route('logout')}}">Đăng xuất</a></li>
+										</ul>	
+									</li>
+								</ul>	
+								@else
 								<i class="flaticon-profile"></i>
-								<a href="{{route('login')}}">Đăng nhập hoặc tạo tài khoản</a> 
+								<a href="{{route('login')}}">Đăng nhập/Tạo tài khoản</a> 
+								@endif
+
+							
+								
 							</div>
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="flaticon-bag"></i>
 									<span>0</span>
 								</div>
-								<a href="{{route('gio-hang')}}">Giỏ hàng</a>
+								<a  style="display: contents;" href="{{route('gio-hang')}}">Giỏ hàng</a>
 							</div>
 						</div>
 					</div>

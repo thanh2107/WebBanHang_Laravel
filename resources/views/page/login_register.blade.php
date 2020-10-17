@@ -91,12 +91,7 @@
 							</label>
 							<input class="input-login" type="text" name="username" id="username">
 						</p>	
-						<p class="row-login"> 
-							<label>Địa chỉ
-								<span class="required">*</span>
-							</label>
-							<input class="input-login" type="text" name="address" id="address">
-						</p>
+				
 							<p class="row-login"> 
 							<label>Số điện thoại
 								<span class="required">*</span>

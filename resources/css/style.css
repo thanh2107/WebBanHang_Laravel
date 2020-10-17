@@ -367,6 +367,15 @@ ol {
 	cursor: pointer;
 	background-color: transparent;
 }
+.up-item a{
+
+	display: inline-block;
+    font-size: 16px;
+    margin-right: 50px;
+    line-height: 1;
+    padding: 17px 0;
+    position: relative;
+}
 
 .user-panel .up-item {
 	display: inline-block;
@@ -423,7 +432,7 @@ ol {
 	position: relative;
 }
 
-.main-menu li a {
+.main-menu li a  {
 	display: inline-block;
 	font-size: 16px;
 	color: #ffffff;

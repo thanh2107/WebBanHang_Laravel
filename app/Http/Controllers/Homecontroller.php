@@ -8,6 +8,7 @@ use App\Models\SanPham;
 use App\Models\LoaiSP;
 use App\Models\ChiTietSP;
 use App\Models\NguoiDung;
+use App\Models\User;
 use Hash;
 use Auth;
 use Session;
@@ -62,9 +63,9 @@ class HomeController extends Controller
 
             [   
  
-                'email'=>'required|email|unique:nguoi_dung,email',
+                'email'=>'required|email|unique:users,email',
                 'password'=>'required|min:6|max:20',
-                'username'=>'required|unique:nguoi_dung,username|min:6|alpha_dash',
+                'username'=>'required|unique:users,name|min:6|alpha_dash',
                 'confirmpassword'=>'required|same:password',
                 'phone' =>'numeric'
             
@@ -85,12 +86,11 @@ class HomeController extends Controller
 
             ]);
        
-        $user = new NguoiDung();
-        $user ->username = $req->username;
+        $user = new User();
+        $user ->name = $req->username;
         $user ->email = $req->email;
-        $user ->dia_chi = $req->address;
         $user ->password = Hash::make($req->password);
-        $user ->sdt = $req->phone;
+        $user ->phone = $req->phone;
         $user->save();
 
 
@@ -108,7 +108,7 @@ class HomeController extends Controller
             
             ],
             [
-                'email.required'=>'Vui lòng nhập email',
+                'email.required'=>'Vui lòng nhập email or username',
                 'password.required'=>'Vui lòng nhập mật khẩu',
                 'password.min'=>'Nhập mật khẩu ít nhất 6 kí tự',
                 'password.max'=>'Nhập mật khẩu không quá 20 kí tự'
@@ -117,7 +117,7 @@ class HomeController extends Controller
 
        // $kiemtra = array('email'=>$req->email,'password'=>$req->password);
         
-        if(Auth::attempt(['email'=>$req->email,'password'=>$req->password])||Auth::attempt(['username'=>$req->email,'password'=>$req->password])){
+        if(Auth::attempt(['email'=>$req->email,'password'=>$req->password])||Auth::attempt(['name'=>$req->email,'password'=>$req->password])){
 
         return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công!']);
 
@@ -127,4 +127,11 @@ class HomeController extends Controller
              return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công!']);
         }
     }
+
+
+
+    public function getLogout(){
+        Auth::logout();
+      return redirect()->back();
+}
 }

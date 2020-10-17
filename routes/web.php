@@ -69,3 +69,8 @@ Route::post('register',[
 		'uses'=>'App\Http\Controllers\HomeController@postRegister',
 		'as'=>'register'
 	]);
+Route::get('logout',[
+		
+		'uses'=>'App\Http\Controllers\HomeController@getLogout',
+		'as'=>'logout'
+	]);
