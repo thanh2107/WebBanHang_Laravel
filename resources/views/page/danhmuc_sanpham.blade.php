@@ -133,7 +133,7 @@
                 <div class="row">
                     @foreach($sanpham as $sp) <div class="col-lg-4 col-sm-6">
                      <div class="product-item">
-                        <div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sp->id_san_pham)}}';">
+                        <div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sp->id)}}';">
                             @if($sp->gia_khuyen_mai != 0)
                             <div class="tag-sale">ON SALE</div>
                             @endif

@@ -39,7 +39,7 @@ class HomeController extends Controller
       return view('page.danhmuc_sanpham',compact('sanpham','loai'));
 }
     public function getChiTiet(Request $req){
-        $sanpham = SanPham::where('id_san_pham',$req->id)->first();
+        $sanpham = SanPham::where('id',$req->id)->first();
          $chitietsp = ChiTietSP::where('id_san_pham',$req->id)->get();
          $hinh= $chitietsp->find(1);
          $h=$hinh->id_hinh;

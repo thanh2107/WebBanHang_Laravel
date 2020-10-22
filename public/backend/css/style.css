@@ -58,6 +58,9 @@ body a:hover{
     list-style-type: none;
     padding-left: 0;
 }
+select.form-control.input-sm.m-bot15.input_size {
+    font-size: 15px;
+}
 /*LEFT NAVIGATION ICON*/
 .dcjq-icon {
     height:17px;
@@ -107,7 +110,9 @@ a.active.styling-edit {
 span.alert.alert-info.errorI {
     padding: 3px !important;
 }
-
+span.alert.alert-danger.errorI {
+    padding: 3px !important;
+}
 
 .nav-collapse.collapse {
     display:inline;

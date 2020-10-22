@@ -15,7 +15,7 @@ class ChiTietSP extends Model
     }
      public function size_sp(){
 
-    	return $this->belongsTo('App\Models\SizeSP','id_size','id');
+    	return $this->belongsTo('App\Models\SizeSP','id_size','id');  //id là id của Model SizeSP  và id_size là khoá ngoại bản chị tiết sp
     }
      public function mau_sp(){
 

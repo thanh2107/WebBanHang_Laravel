@@ -133,4 +133,36 @@ Route::get('logout',[
 		'uses'=>'App\Http\Controllers\CategoryProductController@update_category_product',
 		'as'=>'update_category'
 	]);
+//product
+	//category product
+	Route::get('add_product',[
+		
+		'uses'=>'App\Http\Controllers\ProductController@add_product',
+		'as'=>'add_product'
+	]);
+	Route::post('save_product',[
+		
+		'uses'=>'App\Http\Controllers\ProductController@save_product',
+		'as'=>'save_product'
+	]);
+	Route::get('all_product',[
+		
+		'uses'=>'App\Http\Controllers\ProductController@all_product',
+		'as'=>'all_product'
+	]);
+	Route::get('edit_product/{id_san_pham}',[
+		
+		'uses'=>'App\Http\Controllers\ProductController@edit_product',
+		'as'=>'edit_product'
+	]);
+	Route::get('delete_product/{id_san_pham}',[
+		
+		'uses'=>'App\Http\Controllers\ProductController@delete_product',
+		'as'=>'delete_product'
+	]);
+	Route::post('update_product/{id_san_pham}',[
+			
+		'uses'=>'App\Http\Controllers\ProductController@update_product',
+		'as'=>'update_product'
+	]);
 	

@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-th"></i>
                         <span>Danh mục sản phẩm</span>
                     </a>
                     <ul class="sub">
@@ -97,13 +97,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </li>
                 <li>
                     <a href="fontawesome.html">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>Font awesome </span>
+                        <i class="fa fa-book"></i>
+                        <span>Sản phẩm</span>
                     </a>
+                    <ul class="sub">
+                        <li><a href="{{route('add_product')}}">Thêm sản phẩm</a></li>
+                        <li><a href="{{route('add_product')}}">Thêm chi tiết cho sản phẩm</a></li>
+                        <li><a href="{{route('all_product')}}">Liệt kê sản phẩm</a></li>
+                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-th"></i>
+                        <i class=" fa fa-bullhorn"></i>
                         <span>Data Tables</span>
                     </a>
                     <ul class="sub">

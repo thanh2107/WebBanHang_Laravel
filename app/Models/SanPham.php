@@ -9,8 +9,8 @@ class SanPham extends Model
 {
     protected $table = "san_pham";
     public function loai_san_pham(){
-
-    	return $this->belongsTo('App\Models\LoaiSP','id_loai_san_pham','id_san_pham');
+    	return $this->belongsTo('App\Models\LoaiSP','id_loai_san_pham','id_loai_san_pham');
+    	//Khoá ngoại và khoá chính của bảng loại sản phẩm
     }
     
 }

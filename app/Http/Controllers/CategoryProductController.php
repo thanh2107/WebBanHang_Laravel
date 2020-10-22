@@ -70,5 +70,5 @@ class CategoryProductController extends Controller
             LoaiSP::where('id_loai_san_pham',$id_loai_san_pham)->update($data);
             Session::put('message', 'Cật nhật danh mục sản phẩm thành công');
           return Redirect::to('all_category');
-}
+    }
 }

@@ -31,19 +31,19 @@
 							@if(!empty($hinh))
 					
 								@if(!empty($hinh->hinh_sp->h2))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}} "alt=""></div>
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}} "alt=""></div>
 								@endif
 								@if(!empty($hinh->hinh_sp->h3))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}} "alt=""></div>
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}} "alt=""></div>
 								@endif
 								@if(!empty($hinh->hinh_sp->h4))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}} "alt=""></div>
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}} "alt=""></div>
 								@endif
 								@if(!empty($hinh->hinh_sp->h5))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}} "alt=""></div>
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}} "alt=""></div>
 								@endif
 								@if(!empty($hinh->hinh_sp->h6))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}}"><img src="resources/img/product/{{$sanpham->id_san_pham}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}} "alt=""></div>
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}} "alt=""></div>
 								@endif
 
 							@endif
