@@ -27,7 +27,7 @@
 									<li><i class="flaticon-profile"></i></li>
 									<li><a href="">Chào bạn {{Auth::user()->name}}</a> 
 										<ul class="sub-menu">
-											<li><a href="{{route('logout')}}">Đăng xuất</a></li>
+											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>Đăng xuất</a></li>
 										</ul>	
 									</li>
 								</ul>	
@@ -64,11 +64,14 @@
 						</ul>	
 					</li>
 
-					<li><a href="#">Sản phẩm</a>
+					<li><a href="{{route('danh_muc')}}">Sản phẩm</a>
 						<ul class="sub-menu">
 							@foreach($loai_sp as $loai)
+							@if($loai->trang_thai==1)
 							<li><a href="{{route('loai-san-pham',$loai->id_loai_san_pham)}}">{{$loai->ten_LSP}}</a></li>
+							@endif
 							@endforeach
+							
 						</ul>
 					</li>
 					<li><a href="#">Phụ kiện

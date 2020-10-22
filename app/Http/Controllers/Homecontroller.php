@@ -33,6 +33,11 @@ class HomeController extends Controller
         $sanpham = SanPham::all();
     	return view('page.loai_sanpham',compact('sp_theoloai','loai','tenloai','sanpham'));
     }
+    public function getDanhMuc(){
+        $sanpham = SanPham::all();
+         $loai = LoaiSP::all();
+      return view('page.danhmuc_sanpham',compact('sanpham','loai'));
+}
     public function getChiTiet(Request $req){
         $sanpham = SanPham::where('id_san_pham',$req->id)->first();
          $chitietsp = ChiTietSP::where('id_san_pham',$req->id)->get();
@@ -133,5 +138,6 @@ class HomeController extends Controller
     public function getLogout(){
         Auth::logout();
       return redirect()->back();
-}
+    }
+     
 }

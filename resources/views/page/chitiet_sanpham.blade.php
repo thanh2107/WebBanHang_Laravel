@@ -18,7 +18,7 @@
 	<section class="product-section">
 		<div class="container">
 			<div class="back-link">
-				<a href="#"> &lt;&lt; Trở lại danh mục</a>
+				<a href="{{route('danh_muc')}}"> &lt;&lt; Trở lại danh mục</a>
 			</div>
 			<div class="row">
 				<div class="col-lg-6">

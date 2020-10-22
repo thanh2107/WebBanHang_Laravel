@@ -6,7 +6,7 @@
         <h4>DANH MỤC</h4>
         <div class="site-pagination">
             <a href="{{route('trang-chu')}}">Trang chủ</a> / Trang phục / 
-            <a href="{{route('loai-san-pham',$tenloai->id_loai_san_pham)}}">{{$tenloai->ten_LSP}}</a> /
+            <a href="{{route('danh_muc')}}">Danh mục</a> /
         </div>
     </div>
 </div>
@@ -20,11 +20,11 @@
                     <h2 class="fw-title">Danh mục</h2>
                     <ul class="category-menu">
                         @foreach($loai as $ls)
-                        @if($ls->trang_thai==1)
                         @php
                         $count =0;
                         @endphp
-                        <li><a href="{{route('loai-san-pham',$ls->id_loai_san_pham)}}">{{$ls ->ten_LSP}}
+                        @if($ls->trang_thai==1)
+                            <li><a href="{{route('loai-san-pham',$ls->id_loai_san_pham)}}">{{$ls ->ten_LSP}}
                             @foreach($sanpham as $sp)
                             @if($sp->id_loai_san_pham == $ls->id_loai_san_pham)
                             @php
@@ -33,7 +33,7 @@
                             @endif
                             @endforeach
                             <span>{{$count}}</span>
-                        </a></li>  
+                        </a></li>
                         @endif
                         @endforeach
                     </ul>
@@ -131,8 +131,7 @@
             </div>
             <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
                 <div class="row">
-                    @foreach($sp_theoloai as $sp)
-                    <div class="col-lg-4 col-sm-6">
+                    @foreach($sanpham as $sp) <div class="col-lg-4 col-sm-6">
                      <div class="product-item">
                         <div class="pi-pic"  onclick="window.location='{{route('chi-tiet-san-pham',$sp->id_san_pham)}}';">
                             @if($sp->gia_khuyen_mai != 0)
