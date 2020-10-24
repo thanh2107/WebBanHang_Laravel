@@ -6,15 +6,29 @@ use Illuminate\Http\Request;
 use Hash;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
     //
+    public function AuthLogin(){
+
+            if(Auth::check())
+            {   
+                return Redirect::to('admin.dashboard'); 
+                
+            }
+            else
+            {   
+                return Redirect::to('admin')->send(); 
+                
+            }
+    }
     public function getIndex(){
 
     		return view('admin_login');
     }
     public function show_dashboard(){
-
+            $this->AuthLogin();
     		return view('admin.dashboard');
     }
     public function dashboard(Request $req){
@@ -50,6 +64,7 @@ class AdminController extends Controller
 
 
     public function getLogout(){
+         $this->AuthLogin();
         Auth::logout();
       return view('admin_login');
     

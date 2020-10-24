@@ -5,9 +5,16 @@
 	<div class="page-top-info">
 		<div class="container">
 			<h4>CHI TIẾT SẢN PHẨM</h4>
-			<div class="site-pagination">
-				<a href="{{route('trang-chu')}}">Home</a> /
-				<a href="">Shop</a>
+			
+			<div class="site-pagination url-1">
+				<a class="url-1" href="{{route('trang-chu')}}">Home /</a> 
+				<span> Thời trang /</span>
+			</div>
+			<div class="site-pagination url-1">
+				<a class="url-1" href="">{{$sanpham->loai_san_pham->ten_LSP}} /</a> 
+			</div>
+			<div class="site-pagination url-1">
+				<span class="url-1" href="">{{$sanpham->ten_san_pham}} </span> 
 			</div>
 		</div>
 	</div>
@@ -94,8 +101,13 @@
 							</div>
 							<div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 								<div class="panel-body">
-									<p>{{$sanpham ->mo_ta}}</p>
+									
+								<p>{{$sanpham ->mo_ta}}<br>
+								Phong cách: {{$sanpham ->phong_cach}}<br>
+								Kiểu mẫu: {{$sanpham ->kieu_mau}}<br>
+								Thành Phần: {{$sanpham ->thanh_phan}}</p>
 								
+		
 								</div>
 							</div>
 						</div>

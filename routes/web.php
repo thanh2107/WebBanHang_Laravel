@@ -166,3 +166,4 @@ Route::get('logout',[
 		'as'=>'update_product'
 	]);
 	
+	

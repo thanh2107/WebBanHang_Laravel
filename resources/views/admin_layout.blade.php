@@ -56,7 +56,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="{{asset('public/backend/images/2.png')}}">
-                <span class="username">{{Auth::user()->name}}</span>
+                
+                @if(Auth::check())
+                 <span class="username">   {{Auth::user()->name}}  </span>
+                @else
+
+                <span class="username"> chưa đăng nhập  </span>
+                @endif
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">

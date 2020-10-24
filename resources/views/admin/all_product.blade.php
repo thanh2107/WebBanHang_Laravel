@@ -64,7 +64,7 @@
               @endif
             </td>
             <td><span class="text-ellipsis">{{$product->loai_san_pham->ten_LSP}}</span></td>
-            <td><span class="text-ellipsis">{{$product->hinh}}</span></td>
+            <td><span class="text-ellipsis"> <img src="resources/img/product/{{$product->hinh}}" height="100" width="75"></span></td>
             <td>                
               @if($product->moi==1)  {{-- bằng 1 là sp mới --}}
               <span class="text-ellipsis">Mới</span>
@@ -80,7 +80,7 @@
               <a href="{{route('edit_product',$product->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o fa-check text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có muốn chắc chắn xoá danh mục [{{$product->ten_san_pham}}] ?')" href="{{route('delete_product',$product->id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có muốn chắc chắn xoá sản phẩm [{{$product->ten_san_pham}}] ?')" href="{{route('delete_product',$product->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
              </a>
             </td>

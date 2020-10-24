@@ -2480,3 +2480,15 @@ span.style-checkbox{
 		display: none;
 	}
 }
+/*custom*/
+ a.url-1 {
+    display: inline-block;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.site-pagination.url-1 {
+	display: inline-block;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
