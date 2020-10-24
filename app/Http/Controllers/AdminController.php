@@ -10,9 +10,15 @@ use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
     //
+
+
+
+
+
+
     public function AuthLogin(){
 
-            if(Auth::check())
+            if(Auth::check()&&Auth::user()->level=='3')
             {   
                 return Redirect::to('admin.dashboard'); 
                 

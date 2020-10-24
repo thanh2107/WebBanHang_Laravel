@@ -18,11 +18,11 @@
 							<a href="#" class="site-btn sb-white">THÊM VÀO GIỎ</a>
 						</div>
 					</div>
-					<div class="offer-card text-white">
+					{{-- <div class="offer-card text-white">
 						<span>from</span>
-						<h2>${{$sl->gia}}</h2>
+						<h2>đ{{$sl->gia}}</h2>
 						<p>SHOP NOW</p>
-					</div>
+					</div> --}}
 				</div>
 				@endif
 			</div>
@@ -77,7 +77,7 @@
 				@foreach($loai as $ls)
 				<li><a href="#">{{$ls->ten_LSP}}</a></li>
 				@endforeach
-				<li><a href="#">LEGGINGS</a></li>
+		
 			</ul>							{{-- <div class="tag-sale">ON SALE</div> --}}
 			<div class="row">
 				@foreach($best_selling as $sl)

@@ -40,7 +40,17 @@ body a:hover{
 th.col-222 {
     color: black;
 }
+
+/*custom*/
+
+.form-group.col-md-6.col-not-pdleft {
+     padding-left: 0;
+}
+.form-group.col-md-4.col-not-pdleft{
+     padding-left: 0;
+}
 	/*sidebar navigation*/
+
 #sidebar {
     width:240px;
     height:100%;
@@ -3164,4 +3174,8 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
     padding: 0;
 }
 
+
+
+
 }
+

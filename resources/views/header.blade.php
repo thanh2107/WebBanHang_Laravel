@@ -25,7 +25,7 @@
 								@if(Auth::check())
 								<ul style="" class="main-menu">
 									<li><i class="flaticon-profile"></i></li>
-									<li><a href="">Chào bạn {{Auth::user()->name}}</a> 
+									<li><a href="">{{Auth::user()->name}}</a> 
 										<ul class="sub-menu">
 											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>Đăng xuất</a></li>
 										</ul>	

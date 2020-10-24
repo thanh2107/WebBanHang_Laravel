@@ -9,6 +9,7 @@ use App\Models\LoaiSP;
 use App\Models\ChiTietSP;
 use App\Models\NguoiDung;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 use Hash;
 use Auth;
 use Session;
@@ -18,7 +19,7 @@ class HomeController extends Controller
   
     public function getIndex(){
         $slide = Slide:: all();
-        $loai = LoaiSP::all();
+        $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
         $new_product = SanPham::where('moi',1)->paginate(5); /* chỉ lấy ra 5 sản phẩm mới */
         $best_selling = SanPham::orderby('da_ban','desc')->get();
        // $new_product = SanPham::where('new',1)->get();
@@ -123,13 +124,12 @@ class HomeController extends Controller
        // $kiemtra = array('email'=>$req->email,'password'=>$req->password);
         
         if(Auth::attempt(['email'=>$req->email,'password'=>$req->password])||Auth::attempt(['name'=>$req->email,'password'=>$req->password])){
-
-        return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công!']);
-
+        // return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công!']);
+              return Redirect::to('index'); 
         }else
         {
 
-             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công!']);
+             return redirect()->back()->with(['flag'=>'danger','message'=>'Sai mật khẩu hoặc tài khoan!']);
         }
     }
 
