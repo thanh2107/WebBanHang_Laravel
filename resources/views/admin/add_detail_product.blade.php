@@ -1,7 +1,7 @@
 
 @extends('admin_layout')
 @section('admin_content')
-<div class="row">
+<div  class="row">
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
@@ -26,10 +26,23 @@
 
 
             <div class="col-lg-7">
-                <form role="form" action="{{'save_detail_product'}}" method="post" enctype="multipart/form-data">
+                <form  role="form" action="{{'save_detail_product'}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
+                    <input type="hidden" id="id_detail" name="id_detail" >
+                     <div class="form-group col-md-12 col-not-pdleft">
+                        <label for="exampleInputEmail1">Danh Mục</label>
+                        <select required=""  id="detail_product" name="detail_product" class="form-control input-sm m-bot15 input_size" onchange="changeDeltail_product()">
+                            
+                             <option value="" selected disabled hidden>Choose here</option>
+                            @foreach($all_category_product as $cate)
+                            <option value="{{$cate->id_loai_san_pham}}">{{$cate->ten_LSP}}</option>
+
+                            @endforeach
+                            
+                        </select>
+                    </div>
                     <div class="form-group col-md-6 col-not-pdleft">
-                        <label for="exampleInputEmail1">Sản phẩm</label>
+                        <label id="name"  for="exampleInputEmail1">Sản phẩm</label>
                         <select required=""  id="product" name="product" class="form-control input-sm m-bot15 input_size" onchange="changeImg()">
                             
                              <option value="" selected disabled hidden>Choose here</option>
@@ -47,12 +60,24 @@
                             <input type="hidden" id="id_product_Choose" name="id_product_Choose" >
                           
                         <script>
+                        function changeDeltail_product() {
+                          var x = document.getElementById("detail_product").value;
+                        document.getElementById("product").style.visibility = "visible";
+                        document.getElementById("name").style.visibility = "visible";
+
+                  ;
+
+                        }
                         function changeImg() {
                           var x = document.getElementById("product").value;
                           document.getElementById("img_product").src ="resources/img/product/"+x;
                           document.getElementById("id_product_Choose").value =""+x;
                      
-                        }
+                        } 
+                        document.getElementById("product").style.visibility = "hidden";
+                        document.getElementById("name").style.visibility = "hidden";
+                           
+
                         </script>
                     </div>
                     <div class="col-md-12">
@@ -119,15 +144,6 @@
                         <select name="size_product" class="form-control input-sm m-bot15 input_size">
                             @foreach($size_product as $size)
                             <option value="{{$size->id}}">{{$size->ten_size}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6 col-not-pdleft">
-                        <label for="exampleInputPassword1">Danh sách hình ảnh</label>
-                        <select name="gallery" class="form-control input-sm m-bot15 input_size">
-                            @foreach($image_product as   $img)
-                            <option value="{{$img->id}}">{{$img->ten_bst_hinh}}</option>
                             @endforeach
                         </select>
                     </div>

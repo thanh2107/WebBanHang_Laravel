@@ -35,25 +35,21 @@
 					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
 						<div class="product-thumbs-track">
 							<div class="pt active" data-imgbigurl="resources/img/product/{{$sanpham->hinh}}"><img src="resources/img/product/{{$sanpham->hinh}}" alt=""></div>
-							@if(!empty($hinh))
 					
-								@if(!empty($hinh->hinh_sp->h2))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h2:''}} "alt=""></div>
+								@if(!empty($sanpham->h1))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h1}}"><img src="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h1}}"alt=""></div>
 								@endif
-								@if(!empty($hinh->hinh_sp->h3))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h3:''}} "alt=""></div>
+								@if(!empty($sanpham->h2))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h2}}"><img src="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h2}}"alt=""></div>
 								@endif
-								@if(!empty($hinh->hinh_sp->h4))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h4:''}} "alt=""></div>
+								@if(!empty($sanpham->h3))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h3}}"><img src="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h3}}"alt=""></div>
 								@endif
-								@if(!empty($hinh->hinh_sp->h5))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h5:''}} "alt=""></div>
-								@endif
-								@if(!empty($hinh->hinh_sp->h6))	
-								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}}"><img src="resources/img/product/{{$sanpham->id}}/{{!empty($hinh->hinh_sp) ? $hinh->hinh_sp->h6:''}} "alt=""></div>
+								@if(!empty($sanpham->h4))	
+								<div class="pt" data-imgbigurl="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h4}}"><img src="resources/img/product/{{$sanpham->ten_file}}/{{$sanpham->h4}}"alt=""></div>
 								@endif
 
-							@endif
+						
 				
 						</div>
 					</div>
@@ -78,10 +74,21 @@
 					<div class="p-review">
 						<a href="">3 reviews</a>|<a href="">Add your review</a>
 					</div>
+
+                    <div class="fw-size-choose">
+						<p>Màu</p>
+						 <select name="size_product" class="form-control w-25 qq2p">
+                           @if(!empty($color_product))
+							@foreach($color_product as $mau)
+                            <option value="{{$mau->mau_sp->id}}">{{$mau->mau_sp->mau}}</option>
+                            @endforeach
+                           @endif
+                        </select>
+					</div>
 					<div class="fw-size-choose">
 						<p>Size</p>
-						@if(!empty($chitietsp))
-							@foreach($chitietsp as $sz)
+						@if(!empty($size_product))
+							@foreach($size_product as $sz)
 							<div class="sc-item">
 								<input type="radio" name="sc" id="{{$sz->size_sp->ten_size}}">
 								<label for="{{$sz->size_sp->ten_size}}">{{$sz->size_sp->ten_size}}</label>	
@@ -94,6 +101,7 @@
                         <div class="pro-qty"><input type="text" value="1"></div>
                     </div>
 					<a href="#" class="site-btn">Thêm vào giỏ hàng</a>
+					<a href="#" class="site-btn">Mua ngay</a>
 					<div id="accordion" class="accordion-area">
 						<div class="panel">
 							<div class="panel-header" id="headingOne">

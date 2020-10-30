@@ -12,6 +12,9 @@ class SanPham extends Model
     	return $this->belongsTo('App\Models\LoaiSP','id_loai_san_pham','id_loai_san_pham');
     	//Khoá ngoại và khoá chính của bảng loại sản phẩm
     }
+      public function chi_tiet_sp(){
+    	return $this->hasMany('App\Models\ChiTietSP','id_san_pham','id');
+    }
     
     
 }

@@ -2491,6 +2491,13 @@ span.style-checkbox{
     font-size: 12px;
     white-space: nowrap;
 }
+select.form-control.w-25.qq2p {
+    padding: 5px 10px;
+    font-size: 14px;
+    height: 35px;
+    line-height: 30px;
+    color: black;
+}
 
 
 

@@ -34,7 +34,7 @@ class HomeController extends Controller
         $sanpham = SanPham::all();
     	return view('page.loai_sanpham',compact('sp_theoloai','loai','tenloai','sanpham'));
     }
-    public function getDanhMuc(){
+    public function getDanhMuc(){           
         $sanpham = SanPham::all();
          $loai = LoaiSP::all();
       return view('page.danhmuc_sanpham',compact('sanpham','loai'));
@@ -42,10 +42,10 @@ class HomeController extends Controller
     public function getChiTiet(Request $req){
          $sanpham = SanPham::where('id',$req->id)->first();
          $chitietsp = ChiTietSP::where('id_san_pham',$req->id)->get();
-         $hinh= $chitietsp->first();
-    
+         $color_product = ChiTietSP::where('id_san_pham',$req->id)->select('id_mau')->distinct()->get();
+        $size_product = ChiTietSP::where('id_san_pham',$req->id)->select('id_size')->distinct()->get()    ;
         $sanpham_lienquan = SanPham::where('id_loai_san_pham',$sanpham->id_loai_san_pham)->paginate(10); 
-    	return view('page.chitiet_sanpham',compact('sanpham','chitietsp','hinh','sanpham_lienquan'));
+    	return view('page.chitiet_sanpham',compact('sanpham','chitietsp','sanpham_lienquan','color_product','size_product'));
     }
      public function getLienHe(){
 

@@ -8,6 +8,7 @@ use App\Models\LoaiSP;
 use App\Models\HinhSP;
 use App\Models\MauSP;
 use App\Models\SizeSP;
+use App\Models\ChiTietHD;
 use App\Models\ChiTietSP;
 use Session;
 use Auth;
@@ -34,16 +35,14 @@ class DetailProductController extends Controller
 		     	$color_product = MauSP::all();
 		     	$size_product = SizeSP::all();
 		     	$product = SanPham::all();
+		     	
 		     	return view('admin.add_detail_product',compact('all_category_product','product','color_product','image_product','size_product'));
 		     }
 
 		     public function all_detail_product(){
 		     	$this->AuthLogin();
-		     	$all_product = SanPham::all();
-		     	$image_product = HinhSP::all();
-		     	$color_product = MauSP::all();
-		     	$size_product = SizeSP::all();
-		     	return view('admin.all_detail_product',compact('all_product','color_product','image_product','size_product'));
+		     	$detail_product = ChiTietSP::all();
+		     	return view('admin.all_detail_product',compact('detail_product'));
 		     }
 		     public function convert_name($str) {
 		     	$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
@@ -66,21 +65,19 @@ class DetailProductController extends Controller
 		     }
 		     public function save_detail_product(Request $req){
 		     	$this->AuthLogin();
-		     	Session::put('message_add', 'add_product');
 		     	$id_product = SanPham::where('hinh',$req->id_product_Choose)->get();
 		     	$detail_product =ChiTietSP::where('id_san_pham',$id_product[0]->id)->get();
+		     	Session::put('message_add', 'add_product');
+		     	
 		     	foreach ($detail_product as $del) {
-		     		if(strval($del->id_mau) == $req->color_product && strval($del->id_size) == $req->size_product && strval($del->id_hinh) == $req->gallery ){
+		     		if(strval($del->id_mau) == $req->color_product && strval($del->id_size) == $req->size_product ){
 						Session::put('message', 'Chi tiết sản phẩm đã có sẵn');
 						return redirect()->back();
 		     		}	}
-
-
 		     				$data  = array();
 		     				$data['id_san_pham'] = $id_product[0]->id;
 		     				$data['id_mau'] = $req->color_product;
 		     				$data['id_size'] = $req->size_product;
-		     				$data['id_hinh'] = $req->gallery;
 		     				$data['soluong'] = $req->quantity;
 		     				ChiTietSP::insert($data);
 		     				Session::put('message', 'Thêm chi tiết sản phẩm thành công');
@@ -133,59 +130,42 @@ class DetailProductController extends Controller
 		     				return redirect()->back();
 				}
 		      }
-		     public function edit_product($id_san_pham){
+		     public function delete_detail_product($id_chi_tiet_sp){
 		     	$this->AuthLogin();
-		     	$all_category_product = LoaiSP::all();
-		     	$product = SanPham::where('id',$id_san_pham)->first();
-		     	return view('admin.edit_product',compact('product','all_category_product'));
-		     }
-
-		     public function delete_product($id_san_pham){
-		     	$this->AuthLogin();
-		     	$chitiet_sp = ChiTietSP::where('id_san_pham',$id_san_pham)->get();
-		     	if(count($chitiet_sp) > 0){
+		     	//	$chitiet_hd = ChiTietHD::where('id_san_pham',$id_chi_tiet_sp)->get();
+		     	// if(count($chitiet_hd) > 0){
 
 
-		     		Session::put('message', 'Xoá sản phẩm thất bại bởi vì có chi tiết sản phẩm thuộc sản phẩm này  ');
-		     		return Redirect::to('all_product');
-		     	}
-		     	else
-		     	{
+		     	// 	Session::put('message', 'Xoá chi tiet sản phẩm thất bại bởi vì có hoá đơn  thuộc sản phẩm này  ');
+		     	// 	return Redirect::to('all_detail_product');
+		     	// }
+		     	// else
+		     	// {
 
-		     		SanPham::where('id',$id_san_pham) ->delete();
-		     		Session::put('message', 'Xoá  sản phẩm thành công');
-		     		return Redirect::to('all_product');
+		     	// 	ChiTietSP::where('id',$id_chi_tiet_sp) ->delete();
+		     	// 	Session::put('message', 'Xoá  chi tiết sản phẩm thành công');
+		     	// 	return Redirect::to('all_detail_product');
 
-		     	}
+		     	// }
+
+		     		ChiTietSP::where('id',$id_chi_tiet_sp) ->delete();
+		     		Session::put('message', 'Xoá  chi tiết sản phẩm thành công');
+		     		return Redirect::to('all_detail_product');
 
 		     }
-		     public function update_product($id_san_pham,Request $req){
+		     public function update_detail_product($id_chi_tiet_sp,Request $req){
 		     	$this->AuthLogin();
 		     	$data  = array();
-		     	$data['ten_san_pham'] = $req->product_name;
-		     	$data['id_loai_san_pham'] = $req->category_product;
-		     	$data['mo_ta'] = $req->product_desc;
-		     	$data['phong_cach'] = $req->phong_cach;
-		     	$data['kieu_mau'] = $req->kieu_mau;
-		     	$data['thanh_phan'] = $req->thanh_phan;
-		     	$data['gia'] = $req->gia_sanpham;
-		     	$data['gia_khuyen_mai'] = $req->gia_khuyen_mai_sanpham;
-		     	$data['moi'] = $req->product_status_new;
-		     	$get_image = $req->file('product_img');
-		     	if($get_image){
-
-		     		$ten_sp = $this->convert_name($req->product_name);
-		     		$new_image = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_image->getclientoriginalextension();
-		                // chèn random và giờ phút giây cho không trùng tên hình ảnh
-		     		$get_image->move('resources/img/product',$new_image);
-		     		$data['hinh'] = $new_image;
-		     		SanPham::where('id',$id_san_pham)->update($data);
+		     	$chitietsp = ChiTietSP::where('id',$id_chi_tiet_sp)->first();
+		     	$data['soluong'] = $req->so_luong;
+		     	if($data['soluong'] != $chitietsp->soluong){
+		     		ChiTietSP::where('id',$id_chi_tiet_sp)->update($data);
 		     		Session::put('message', 'Cật nhật sản phẩm thành công');
-		     		return Redirect::to('all_product');
+		     		return Redirect::to('all_detail_product');
 
 		     	}
-		     	SanPham::where('id',$id_san_pham)->update($data);
-		     	Session::put('message', 'Cật nhật sản phẩm thành công');
-		     	return Redirect::to('all_product');
-		     }
+		     	else{
+		     	Session::put('message', 'Dữ liệu không thay đổi');
+		     	return Redirect::to('all_detail_product');
+		     }}
 }

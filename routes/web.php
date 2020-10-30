@@ -185,17 +185,12 @@ Route::get('logout',[
 		'uses'=>'App\Http\Controllers\DetailProductController@all_detail_product',
 		'as'=>'all_detail_product'
 	]);
-	Route::get('edit_detail_product/{id_san_pham}',[
-		
-		'uses'=>'App\Http\Controllers\DetailProductController@edit_detail_product',
-		'as'=>'edit_detail_product'
-	]);
-	Route::get('delete_detail_product/{id_san_pham}',[
+	Route::get('delete_detail_product/{id_chi_tiet_sp}',[
 		
 		'uses'=>'App\Http\Controllers\DetailProductController@delete_detail_product',
 		'as'=>'delete_detail_product'
 	]);
-	Route::post('update_detail_product/{id_san_pham}',[
+	Route::post('update_detail_product/{id_chi_tiet_sp}',[
 			
 		'uses'=>'App\Http\Controllers\DetailProductController@update_detail_product',
 		'as'=>'update_detail_product'
