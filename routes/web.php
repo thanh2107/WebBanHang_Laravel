@@ -133,8 +133,7 @@ Route::get('logout',[
 		'uses'=>'App\Http\Controllers\CategoryProductController@update_category_product',
 		'as'=>'update_category'
 	]);
-//product
-	//category product
+	// product
 	Route::get('add_product',[
 		
 		'uses'=>'App\Http\Controllers\ProductController@add_product',
@@ -165,5 +164,40 @@ Route::get('logout',[
 		'uses'=>'App\Http\Controllers\ProductController@update_product',
 		'as'=>'update_product'
 	]);
-	
+	// detail_product
+	Route::get('add_detail_product',[
+		
+		'uses'=>'App\Http\Controllers\DetailProductController@add_detail_product',
+		'as'=>'add_detail_product'
+	]);
+	Route::post('save_detail_product',[
+		
+		'uses'=>'App\Http\Controllers\DetailProductController@save_detail_product',
+		'as'=>'save_detail_product'
+	]);
+	Route::post('save_color_size',[
+		
+		'uses'=>'App\Http\Controllers\DetailProductController@save_color_size',
+		'as'=>'save_color_size'
+	]);
+	Route::get('all_detail_product',[
+		
+		'uses'=>'App\Http\Controllers\DetailProductController@all_detail_product',
+		'as'=>'all_detail_product'
+	]);
+	Route::get('edit_detail_product/{id_san_pham}',[
+		
+		'uses'=>'App\Http\Controllers\DetailProductController@edit_detail_product',
+		'as'=>'edit_detail_product'
+	]);
+	Route::get('delete_detail_product/{id_san_pham}',[
+		
+		'uses'=>'App\Http\Controllers\DetailProductController@delete_detail_product',
+		'as'=>'delete_detail_product'
+	]);
+	Route::post('update_detail_product/{id_san_pham}',[
+			
+		'uses'=>'App\Http\Controllers\DetailProductController@update_detail_product',
+		'as'=>'update_detail_product'
+	]);
 	

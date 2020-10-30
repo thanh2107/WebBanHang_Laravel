@@ -81,22 +81,67 @@ public function save_product(Request $req){
     $data['gia'] = $req->gia_sanpham;
     $data['gia_khuyen_mai'] = $req->gia_khuyen_mai_sanpham;
     $data['moi'] = $req->product_status_new;
+
     $get_image = $req->file('product_img');
     $allowtypes = array('jpg', 'png', 'jpeg');
     $allowUpload   = true;
-    $get_img_extensiton = $get_image->getclientoriginalextension();
+   $get_img_extensiton = $get_image->getclientoriginalextension();
     if (!in_array($get_img_extensiton,$allowtypes))
     {
         $allowUpload = false;
     }
+     for ($i = 1 ; $i <= 4 ; $i++) { 
+        $get_image_detail =$req->file('product_img'.$i);
+        if (!is_null($get_image_detail))
+        {
+            $get_img_extensiton_detail = $get_image_detail->getclientoriginalextension();
+          if (!in_array($get_img_extensiton_detail,$allowtypes))
+          {
+            $allowUpload = false;
+            break;
+          }
+        }
+        
+      }
 
     if ($allowUpload)
     {
+
+     
+      
+
         $ten_sp = $this->convert_name($req->product_name);
+        $data['ten_file'] = $ten_sp.'/';
+         mkdir('resources/img/product/'.$ten_sp);
+
+         //HinhDaiDien
         $new_image = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_img_extensiton;
                 // chèn random và giờ phút giây cho không trùng tên hình ảnh
         $get_image->move('resources/img/product',$new_image);
         $data['hinh'] = $new_image;
+        //EndHinhDaiDien
+  
+        for ($i = 1 ; $i <= 4 ; $i++) { 
+           $get_image_detail =$req->file('product_img'.$i);
+          if (is_null($get_image_detail))
+          {
+            continue;
+            }
+            else{
+
+            $get_img_extensiton_detail = $get_image_detail->getclientoriginalextension();
+            $new_image_detail = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_img_extensiton_detail;
+                    // chèn random và giờ phút giây cho không trùng tên hình ảnh
+            $get_image_detail->move('resources/img/product/'.$ten_sp,$new_image_detail);
+            $data['h'.$i] = $new_image_detail;
+
+  
+
+            }
+
+          }
+
+
         SanPham::insert($data);
         Session::put('message', 'Thêm sản phẩm thành công');
         return Redirect::to('add_product');
@@ -115,7 +160,23 @@ public function edit_product($id_san_pham){
    $product = SanPham::where('id',$id_san_pham)->first();
    return view('admin.edit_product',compact('product','all_category_product'));
 }
-
+public static function deleteDir($dirPath) {
+    if (! is_dir($dirPath)) {
+        throw new InvalidArgumentException("$dirPath must be a directory");
+    }
+    if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+        $dirPath .= '/';
+    }
+    $files = glob($dirPath . '*', GLOB_MARK);
+    foreach ($files as $file) {
+        if (is_dir($file)) {
+            self::deleteDir($file);
+        } else {
+            unlink($file);
+        }
+    }
+    rmdir($dirPath);
+}
 public function delete_product($id_san_pham){
    $this->AuthLogin();
    $chitiet_sp = ChiTietSP::where('id_san_pham',$id_san_pham)->get();
@@ -127,13 +188,23 @@ public function delete_product($id_san_pham){
    }
    else
    {
-    
+    $product =  SanPham::where('id',$id_san_pham)->first();
+  $namefile = "resources/img/product/".rtrim($product->ten_file, "/");
+   // dd($namefile);
+     array_map('unlink', glob("$namefile/*.*"));
+    if(rmdir($namefile)){
+      $name_img = "resources/img/product/".$product->hinh;
+        unlink($name_img);
     SanPham::where('id',$id_san_pham) ->delete();
     Session::put('message', 'Xoá  sản phẩm thành công');
     return Redirect::to('all_product');
+  }
+    else{
+        Session::put('message', 'Xoá  sản phẩm không thành công');
+       return redirect()->back();
+    }
 
-}
-
+  }
 }
 public function update_product($id_san_pham,Request $req){
    $this->AuthLogin();
@@ -148,20 +219,70 @@ $data['gia'] = $req->gia_sanpham;
 $data['gia_khuyen_mai'] = $req->gia_khuyen_mai_sanpham;
 $data['moi'] = $req->product_status_new;
 $get_image = $req->file('product_img');
+$allowtypes = array('jpg', 'png', 'jpeg');
+$allowUpload   = true;
+    
+
 if($get_image){
+  $get_img_extensiton = $get_image->getclientoriginalextension();
+     if (!in_array($get_img_extensiton,$allowtypes))
+    {
+        $allowUpload = false;
+    }
 
     $ten_sp = $this->convert_name($req->product_name);
     $new_image = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_image->getclientoriginalextension();
                 // chèn random và giờ phút giây cho không trùng tên hình ảnh
     $get_image->move('resources/img/product',$new_image);
     $data['hinh'] = $new_image;
-    SanPham::where('id',$id_san_pham)->update($data);
-    Session::put('message', 'Cật nhật sản phẩm thành công');
-    return Redirect::to('all_product');
 
 }
-SanPham::where('id',$id_san_pham)->update($data);
-Session::put('message', 'Cật nhật sản phẩm thành công');
-return Redirect::to('all_product');
+    for ($i = 1 ; $i <= 4 ; $i++) { 
+        $get_image_detail =$req->file('product_img'.$i);
+        if ($get_image_detail)
+        {
+            $get_img_extensiton_detail = $get_image_detail->getclientoriginalextension();
+          if (!in_array($get_img_extensiton_detail,$allowtypes))
+          {
+            $allowUpload = false;
+            break;
+          }
+        }
+        
+      }
+
+   if ($allowUpload){
+        $ten_sp = $this->convert_name($req->product_name);
+        // $data['ten_file'] = $ten_sp.'/';
+        //  mkdir('resources/img/product/'.$ten_sp);
+
+        for ($i = 1 ; $i <= 4 ; $i++) { 
+           $get_image_detail =$req->file('product_img'.$i);
+          if ($get_image_detail)
+          {
+
+            $get_img_extensiton_detail = $get_image_detail->getclientoriginalextension();
+            $new_image_detail = $ten_sp.rand(0,99).date("h_i_s").'.'.$get_img_extensiton_detail;
+                    // chèn random và giờ phút giây cho không trùng tên hình ảnh
+            $get_image_detail->move('resources/img/product/'.$ten_sp,$new_image_detail);
+            $data['h'.$i] = $new_image_detail;
+
+            }
+              if(!isset($req->as[$i])){
+              $data['h'.$i] = "";
+            }
+             
+          }
+          SanPham::where('id',$id_san_pham)->update($data);
+          Session::put('message', 'Cật nhật sản phẩm thành công');
+         return redirect()->back();
+    }
+    else
+    {
+        Session::put('message', 'Không upload được file,Chỉ được upload các định dạng JPG, PNG, JPEG, kiểu file không đúng ...');
+         return redirect()->back();
+    }
+
+
 }
 }

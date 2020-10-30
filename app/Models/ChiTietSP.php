@@ -9,10 +9,7 @@ class ChiTietSP extends Model
 {
     protected $table = "chi_tiet_sp";
 
-     public function hinh_sp(){
-
-    	return $this->belongsTo('App\Models\HinhSP','id_hinh','id');
-    }
+    
      public function size_sp(){
 
     	return $this->belongsTo('App\Models\SizeSP','id_size','id');  //id là id của Model SizeSP  và id_size là khoá ngoại bản chị tiết sp

@@ -13,4 +13,5 @@ class SanPham extends Model
     	//Khoá ngoại và khoá chính của bảng loại sản phẩm
     }
     
+    
 }

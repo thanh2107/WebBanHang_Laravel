@@ -1492,7 +1492,7 @@ font-size: 12px;
 }
 
 .product-thumbs-track {
-	width: 1200px;
+	width: 800px;
 }
 
 .product-thumbs .pt {
@@ -2491,4 +2491,6 @@ span.style-checkbox{
     font-size: 12px;
     white-space: nowrap;
 }
+
+
 

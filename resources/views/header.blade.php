@@ -22,7 +22,7 @@
 						<div class="user-panel">
 							<div class="up-item">
 								
-								@if(Auth::check())
+								@if(Auth::check()&&Auth::user()->level=='0')
 								<ul style="" class="main-menu">
 									<li><i class="flaticon-profile"></i></li>
 									<li><a href="">{{Auth::user()->name}}</a> 

@@ -38,6 +38,7 @@
 								<span class="required">*</span>
 							</label>
 							<input class="input-login" type="text" name="email" id="email">
+								<input type="hidden" name="level" value="0">
 						</p>	
 						<p class="row-login"> 
 							<label>Mật khẩu

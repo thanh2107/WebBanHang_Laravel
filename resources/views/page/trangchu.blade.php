@@ -78,7 +78,7 @@
 				<li><a href="#">{{$ls->ten_LSP}}</a></li>
 				@endforeach
 		
-			</ul>							{{-- <div class="tag-sale">ON SALE</div> --}}
+			</ul>						
 			<div class="row">
 				@foreach($best_selling as $sl)
 				<div class="col-lg-3 col-sm-6"> 

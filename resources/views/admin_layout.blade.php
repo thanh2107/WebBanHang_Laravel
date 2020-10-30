@@ -108,8 +108,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                     <ul class="sub">
                         <li><a href="{{route('add_product')}}">Thêm sản phẩm</a></li>
-                        <li><a href="{{route('add_product')}}">Thêm chi tiết cho sản phẩm</a></li>
                         <li><a href="{{route('all_product')}}">Liệt kê sản phẩm</a></li>
+                        <li><a href="{{route('add_detail_product')}}">Thêm chi tiết sản phẩm</a></li>
+                        <li><a href="{{route('all_detail_product')}}">Liệt kê chi tiết sản phẩm</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -297,6 +298,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		});
 	</script>
+   
 	<!-- //calendar -->
 </body>
 </html>

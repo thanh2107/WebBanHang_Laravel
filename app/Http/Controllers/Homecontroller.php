@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function getIndex(){
         $slide = Slide:: all();
         $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
-        $new_product = SanPham::where('moi',1)->paginate(5); /* chỉ lấy ra 5 sản phẩm mới */
+        $new_product = SanPham::where('moi',1)->paginate(10); /* chỉ lấy ra 5 sản phẩm mới */
         $best_selling = SanPham::orderby('da_ban','desc')->get();
        // $new_product = SanPham::where('new',1)->get();
        // dd($new_product);
@@ -40,12 +40,12 @@ class HomeController extends Controller
       return view('page.danhmuc_sanpham',compact('sanpham','loai'));
 }
     public function getChiTiet(Request $req){
-        $sanpham = SanPham::where('id',$req->id)->first();
+         $sanpham = SanPham::where('id',$req->id)->first();
          $chitietsp = ChiTietSP::where('id_san_pham',$req->id)->get();
-         $hinh= $chitietsp->find(1);
-         $h=$hinh->id_hinh;
-        
-    	return view('page.chitiet_sanpham',compact('sanpham','chitietsp','hinh'));
+         $hinh= $chitietsp->first();
+    
+        $sanpham_lienquan = SanPham::where('id_loai_san_pham',$sanpham->id_loai_san_pham)->paginate(10); 
+    	return view('page.chitiet_sanpham',compact('sanpham','chitietsp','hinh','sanpham_lienquan'));
     }
      public function getLienHe(){
 
@@ -123,7 +123,7 @@ class HomeController extends Controller
 
        // $kiemtra = array('email'=>$req->email,'password'=>$req->password);
         
-        if(Auth::attempt(['email'=>$req->email,'password'=>$req->password])||Auth::attempt(['name'=>$req->email,'password'=>$req->password])){
+        if(Auth::attempt(['email'=>$req->email,'password'=>$req->password,'level'=>$req->level])||Auth::attempt(['name'=>$req->email,'password'=>$req->password,'level'=>$req->level])){
         // return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công!']);
               return Redirect::to('index'); 
         }else

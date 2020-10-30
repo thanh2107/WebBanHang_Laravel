@@ -49,6 +49,35 @@ th.col-222 {
 .form-group.col-md-4.col-not-pdleft{
      padding-left: 0;
 }
+.form-group.col-md-12.col-not-pdleft{
+     padding-left: 0;
+}
+label.name-img-rigth {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+.form-group.col-md-12.frex-ds {
+    margin-bottom: 5px;
+    display: flex;
+}
+.site-btn {
+    display: inline-block;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 167px;
+    padding: 18px 0px 14px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: #337ab7;
+    color: #fff;
+    line-height: normal;
+    cursor: pointer;
+    text-align: center;
+}
+.site-btn100 {
+    width: 100%
+}
 	/*sidebar navigation*/
 
 #sidebar {

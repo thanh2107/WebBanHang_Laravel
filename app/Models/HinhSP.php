@@ -8,7 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class HinhSP extends Model
 {
      protected $table = "hinh_sp";
-     public function chi_tiet_sp(){
-    	return $this->hasMany('App\Models\ChiTietSP','id_hinh','id');
-    }
+    
 }
