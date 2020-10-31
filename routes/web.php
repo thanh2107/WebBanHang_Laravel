@@ -102,6 +102,17 @@ Route::get('logout',[
 		'as'=>'admin_logout'
 	]);
 
+//slide 
+		Route::get('all-slide',[
+		
+		'uses'=>'App\Http\Controllers\SlideController@all_slide',
+		'as'=>'all-slide'
+	]);
+		Route::get('add-slide',[
+
+			'uses'=>'App\Http\Controllers\SlideController@add_slide',
+			'as'=>'add-slide'
+		]);
 //category product
 	Route::get('add_category',[
 		
@@ -195,4 +206,5 @@ Route::get('logout',[
 		'uses'=>'App\Http\Controllers\DetailProductController@update_detail_product',
 		'as'=>'update_detail_product'
 	]);
-	
+	//cart
+	Route::post('add-cart','App\Http\Controllers\CartController@add_cart');

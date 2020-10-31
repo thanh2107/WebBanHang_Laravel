@@ -6,26 +6,31 @@
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
 			@foreach($slide as $sl)
-			<div class="hs-item set-bg" data-setbg="resources/img/slide/{{$sl->img}}">
+			@if($sl->link_product_id !=0)
+			<a id="{{$sl->id}}"  class="cursor-poi" href="{{route('chi-tiet-san-pham',$sl->link_product_id)}}">
+			@else
+				@if($sl->link_catelory_id !=0)
+				<a id="{{$sl->id}}"  class="cursor-poi" href="{{route('loai-san-pham',$sl->link_catelory_id)}}">
+				@else
+					<a>
+				@endif
+			@endif
+			<div  class="hs-item set-bg" data-setbg="resources/img/slide/{{$sl->img}}">
 				@if ($sl->gia != 0)
 				<div class="container">
 					<div class="row">
 						<div class="col-xl-6 col-lg-7 text-white">
-							<span>Hàng mới</span>
+							<span class="test">Hàng mới</span>
 							<h2>{{$sl->tieu_de}}</h2>
 							<p>{{$sl->noi_dung}} </p>
 							<a href="#" class="site-btn sb-line">KHÁM PHÁ</a>
-							<a href="#" class="site-btn sb-white">THÊM VÀO GIỎ</a>
+							
 						</div>
 					</div>
-					{{-- <div class="offer-card text-white">
-						<span>from</span>
-						<h2>đ{{$sl->gia}}</h2>
-						<p>SHOP NOW</p>
-					</div> --}}
 				</div>
 				@endif
 			</div>
+			</a>
 			@endforeach
 
 		</div>

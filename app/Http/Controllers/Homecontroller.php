@@ -18,7 +18,7 @@ class HomeController extends Controller
 {
   
     public function getIndex(){
-        $slide = Slide:: all();
+        $slide = Slide:: where('trang_thai',1)->get();
         $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
         $new_product = SanPham::where('moi',1)->paginate(10); /* chỉ lấy ra 5 sản phẩm mới */
         $best_selling = SanPham::orderby('da_ban','desc')->get();

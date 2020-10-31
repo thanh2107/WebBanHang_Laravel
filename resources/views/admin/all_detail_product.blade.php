@@ -4,7 +4,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Liệt kê sản phẩm
+      Liệt kê chi tiết sản phẩm
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-4">

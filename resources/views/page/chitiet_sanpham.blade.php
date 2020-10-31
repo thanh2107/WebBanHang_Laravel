@@ -7,7 +7,7 @@
 			<h4>CHI TIẾT SẢN PHẨM</h4>
 			
 			<div class="site-pagination url-1">
-				<a class="url-1" href="{{route('trang-chu')}}">Home /</a> 
+				<a class="url-1" href="{{route('trang-chu')}}">Trang chủ/</a> 
 				<span> Thời trang /</span>
 			</div>
 			<div class="site-pagination url-1">
@@ -54,6 +54,8 @@
 						</div>
 					</div>
 				</div>
+
+
 				<div class="col-lg-6 product-details">
 					<h2 class="p-title">{{$sanpham->ten_san_pham}}</h2>
 					{{-- <h3 class="p-price">{{$sanpham->gia}}</h3> --}}
@@ -96,12 +98,20 @@
 							@endforeach
 						@endif
 					</div>
+					<form role="form" action="{{'add-cart'}}" method="post">
+						 {{csrf_field()}}
 					<div class="quantity">
 						<p>Số lượng</p>
-                        <div class="pro-qty"><input type="text" value="1"></div>
+                        <div class="pro-qty"><input name="qty" type="text" value="1">
+                        	<input type="hidden" name="product_id_hidden" value="{{$sanpham->id}}">
+                        </div>
                     </div>
-					<a href="#" class="site-btn">Thêm vào giỏ hàng</a>
-					<a href="#" class="site-btn">Mua ngay</a>
+
+			
+					<button type="submit" name="add_cart" class="site-btn">Thêm vào giỏ hàng</button>
+					<button type="submit" name="buy_now"class="site-btn sb-dark">Mua ngay</button>
+					
+					</form>
 					<div id="accordion" class="accordion-area">
 						<div class="panel">
 							<div class="panel-header" id="headingOne">

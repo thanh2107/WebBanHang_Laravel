@@ -114,14 +114,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{route('all-slide')}}">
                         <i class=" fa fa-bullhorn"></i>
-                        <span>Data Tables</span>
+                        <span>Slide</span>
                     </a>
-                    <ul class="sub">
-                        <li><a href="basic_table.html">Basic Table</a></li>
-                        <li><a href="responsive_table.html">Responsive Table</a></li>
-                    </ul>
+                    
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">

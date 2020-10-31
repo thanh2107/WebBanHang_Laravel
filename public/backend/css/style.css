@@ -42,7 +42,15 @@ th.col-222 {
 }
 
 /*custom*/
-
+a.cursor-pointer {
+    cursor: pointer;
+}
+label.block {
+    padding: 5px;
+}
+input.rd3 {
+    margin-right: 5px;
+}
 .form-group.col-md-6.col-not-pdleft {
      padding-left: 0;
 }
@@ -77,6 +85,9 @@ label.name-img-rigth {
 }
 .site-btn100 {
     width: 100%
+}
+i.fa.fa-plus-square-o.pads {
+    padding: 4px;
 }
 	/*sidebar navigation*/
 
