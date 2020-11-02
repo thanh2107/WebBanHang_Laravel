@@ -16,7 +16,7 @@
             Session::put('message',null);
         }
         ?>
-        @if(count($errors)>0 && Session::get('message_add') == 'add_category')
+        @if(count($errors)>0 && Session::get('message_add') == 'add_slide')
         <div class="alert alert-danger">
             @foreach($errors->all() as $err)
             {{$err}}<br>    
@@ -27,7 +27,7 @@
 
 
             <div class="position-center">
-                <form role="form" name="mainForm" action="{{'save_category'}}" method="post">
+                <form role="form" name="mainForm" action="{{'save_slide'}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tên slide</label>
@@ -35,15 +35,15 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tiêu đề</label>
-                        <input type="text" class="form-control" id="tittle_name" name="tittle_name" placeholder="Tên danh mục" required="">
+                        <input type="text" class="form-control" id="tittle_name" name="tittle_name" placeholder="Tên danh mục" >
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Nội dung</label>
-                        <textarea style="resize: none " rows="8" class="form-control" id="contten" name="contten" placeholder="Nội dung"></textarea> 
+                        <textarea style="resize: none " rows="8" class="form-control" id="contten_slide" name="contten_slide" placeholder="Nội dung"></textarea> 
                     </div>
                     <div class="form-group col-md-4 col-not-pdleft">
                         <label for="exampleInputPassword1">Hình ảnh sản phẩm</label>
-                        <input type="file" class="form-control" id="product_img" required="" name="product_img"   onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                        <input type="file" class="form-control" id="slide_img" required="" name="slide_img"   onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                     </div>
 
                     <div style="margin-bottom: 0;" class="form-group col-md-8">
@@ -63,7 +63,7 @@
                                 <input     class="rd3" type="radio" name="rads" value="1">Danh mục</label>
                            <select disabled="true" id="catelogy"  name="catelogy" class="form-control input-sm m-bot15 input_size">
                                <option value="" selected disabled hidden>Choose here</option>
-                               @foreach($catelogy as   $type)
+                               @foreach($catelogy as $type)
                                <option value="{{$type->id_loai_san_pham}}">{{$type->ten_LSP}}</option>
                                @endforeach          
                            </select>
@@ -83,13 +83,13 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Trạng thái</label>
-                        <select name="category_status" class="form-control input-sm m-bot15">
+                        <select name="slide_status" class="form-control input-sm m-bot15">
                             <option value="0">Ẩn</option>
                             <option value="1">Hiển thị</option>
                         </select>
                     </div>
 
-                    <button type="submit" name="add_category" class="btn btn-info">Thêm slide</button>
+                    <button type="submit" name="add_slide" class="btn btn-info">Thêm slide</button>
                 </form>
                 <script type="text/javascript">
                    document.mainForm.onclick = function(){

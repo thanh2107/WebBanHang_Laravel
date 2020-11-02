@@ -42,6 +42,10 @@ th.col-222 {
 }
 
 /*custom*/
+label.p22 {
+    padding-top: 10px;
+}
+
 a.cursor-pointer {
     cursor: pointer;
 }

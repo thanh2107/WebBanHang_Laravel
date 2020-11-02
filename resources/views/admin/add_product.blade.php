@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-6 form-group col-not-pdleft">
                         <label for="exampleInputEmail1">Giá khuyến mãi</label>
-                        <input type="number" class="form-control" id="gia_khuyen_mai_sanpham" name="gia_khuyen_mai_sanpham" >
+                        <input type="number" value="0" class="form-control" id="gia_khuyen_mai_sanpham" name="gia_khuyen_mai_sanpham" >
                     </div>
                     <div class="form-group col-md-4 col-not-pdleft">
                         <label for="exampleInputPassword1">Danh mục sản phẩm</label>

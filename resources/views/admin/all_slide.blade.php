@@ -63,11 +63,11 @@
             </td>
               <td><span class="text-ellipsis"> <img src="resources/img/slide/{{$slide->img}}" height="75" width="192"></span></td>
               <td>Đường dẫn</td>
-            <td>{{-- {{route('edit_category',$category->id_loai_san_pham)}} --}}
-              <a href="" class="active styling-edit" ui-toggle-class="">
+            <td>
+              <a href="{{route('edit-slide',$slide->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o fa-check text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có muốn chắc chắn xoá danh mục [{{$slide->ten_slide}}] ?')" href="" class="active styling-edit" ui-toggle-class="">{{-- {{route('delete_category',$category->id_loai_san_pham)}} --}}
+              <a onclick="return confirm('Bạn có muốn chắc chắn xoá danh mục [{{$slide->ten_slide}}] ?')" href="{{route('delete-slide',$slide->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
