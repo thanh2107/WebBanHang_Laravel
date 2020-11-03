@@ -8,14 +8,15 @@
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
 						<a href="index" class="site-logo">
-							<img src="resources/img/logo12.png" alt="">
+							<img style="max-width: 80%" src="resources/img/logo12.png" alt="">
 							
 						</a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
-						<form class="header-search-form">
-							<input type="text" placeholder="Tìm kiếm trong loriem ....">
-							<button><i class="flaticon-search"></i></button>
+						<form class="header-search-form" action="{{'search'}}" method="post">
+							  {{csrf_field()}}
+							<input name="keywords_submit"  type="text" placeholder="Tìm kiếm trong loriem ....">
+							<button name="btn_search" type="submit"><i class="flaticon-search"></i></button>
 						</form>
 					</div>
 					<div class="col-xl-4 col-lg-5">
@@ -25,7 +26,7 @@
 								@if(Auth::check()&&Auth::user()->level=='0')
 								<ul style="" class="main-menu">
 									<li><i class="flaticon-profile"></i></li>
-									<li><a href="">{{Auth::user()->name}}</a> 
+									<li><a href="#">{{Auth::user()->name}}</a> 
 										<ul class="sub-menu">
 											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>Đăng xuất</a></li>
 										</ul>	
@@ -42,9 +43,9 @@
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="flaticon-bag"></i>
-									<span>0</span>
+									<span>{{Cart::count()}}</span>
 								</div>
-								<a  style="display: contents;" href="{{route('gio-hang')}}">Giỏ hàng</a>
+								<a  style="display: contents;" href="{{URL::to('show-cart')}}">Giỏ hàng</a>
 							</div>
 						</div>
 					</div>

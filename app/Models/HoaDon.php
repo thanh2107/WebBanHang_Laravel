@@ -12,8 +12,8 @@ class HoaDon extends Model
 
     	return $this->hasMany('App\Models\ChiTietHD','id_hoa_don','id_hoa_don');
     }
-     public function khach_hang(){
+     public function user(){
 
-    	return $this->belongsTo('App\Models\KhachHang','id_khach_hang','id_hoa_don');
+    	return $this->belongsTo('App\Models\Users','id_user','id');
     }
 }

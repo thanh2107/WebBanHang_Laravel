@@ -132,21 +132,7 @@ class DetailProductController extends Controller
 		      }
 		     public function delete_detail_product($id_chi_tiet_sp){
 		     	$this->AuthLogin();
-		     	//	$chitiet_hd = ChiTietHD::where('id_san_pham',$id_chi_tiet_sp)->get();
-		     	// if(count($chitiet_hd) > 0){
-
-
-		     	// 	Session::put('message', 'Xoá chi tiet sản phẩm thất bại bởi vì có hoá đơn  thuộc sản phẩm này  ');
-		     	// 	return Redirect::to('all_detail_product');
-		     	// }
-		     	// else
-		     	// {
-
-		     	// 	ChiTietSP::where('id',$id_chi_tiet_sp) ->delete();
-		     	// 	Session::put('message', 'Xoá  chi tiết sản phẩm thành công');
-		     	// 	return Redirect::to('all_detail_product');
-
-		     	// }
+		     
 
 		     		ChiTietSP::where('id',$id_chi_tiet_sp) ->delete();
 		     		Session::put('message', 'Xoá  chi tiết sản phẩm thành công');

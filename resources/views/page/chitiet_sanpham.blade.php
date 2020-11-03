@@ -27,6 +27,14 @@
 			<div class="back-link">
 				<a href="{{route('danh_muc')}}"> &lt;&lt; Trở lại danh mục</a>
 			</div>
+			<?php
+         $message = Session::get('message');
+         if($message){
+
+            echo '<div  class="alert alert-danger">'.$message.'</div>';
+            Session::put('message',null);
+        }
+        ?>
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="product-pic-zoom">
@@ -73,13 +81,41 @@
 						<i class="fa fa-star-o"></i>
 						<i class="fa fa-star-o fa-fade"></i>
 					</div>
+					
+					<table style="max-width: 60%" class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Màu</th>
+      <th scope="col">Size</th>
+    </tr>
+  </thead>
+  <tbody>
+  	@foreach($color_product as $mau)
+	 <tr>
+      <td>{{$mau->mau_sp->mau}}</td>
+      <td> 	@foreach($chitietsp as $detail)
+      		@if($detail->id_mau==$mau->mau_sp->id && $detail->soluong>0)
+      		{{$detail->size_sp->ten_size}}
+      		@endif
+      		@endforeach
+
+      </td>
+     
+    </tr>
+	@endforeach
+
+  </tbody>
+</table>
+
+
 					<div class="p-review">
 						<a href="">3 reviews</a>|<a href="">Add your review</a>
 					</div>
-
+					<form role="form" action="{{route('add-cart',$sanpham->id)}}" method="post">
+ 						{{csrf_field()}}
                     <div class="fw-size-choose">
 						<p>Màu</p>
-						 <select name="size_product" class="form-control w-25 qq2p">
+						 <select  name="color_products" class="form-control w-25 qq2p">
                            @if(!empty($color_product))
 							@foreach($color_product as $mau)
                             <option value="{{$mau->mau_sp->id}}">{{$mau->mau_sp->mau}}</option>
@@ -92,24 +128,23 @@
 						@if(!empty($size_product))
 							@foreach($size_product as $sz)
 							<div class="sc-item">
-								<input type="radio" name="sc" id="{{$sz->size_sp->ten_size}}">
+								<input required value="{{$sz->size_sp->id}}" type="radio" name="size_products" id="{{$sz->size_sp->ten_size}}">
 								<label for="{{$sz->size_sp->ten_size}}">{{$sz->size_sp->ten_size}}</label>	
 							</div>
 							@endforeach
 						@endif
 					</div>
-					<form role="form" action="{{'add-cart'}}" method="post">
-						 {{csrf_field()}}
+											
 					<div class="quantity">
 						<p>Số lượng</p>
                         <div class="pro-qty"><input name="qty" type="text" value="1">
-                        	<input type="hidden" name="product_id_hidden" value="{{$sanpham->id}}">
+                        	
                         </div>
                     </div>
 
 			
-					<button type="submit" name="add_cart" class="site-btn">Thêm vào giỏ hàng</button>
-					<button type="submit" name="buy_now"class="site-btn sb-dark">Mua ngay</button>
+					<button type="submit" name="action" value="add_cart" class="site-btn">Thêm vào giỏ hàng</button>
+					<button type="submit" name="action" value="buy_now" class="site-btn sb-dark">Mua ngay</button>
 					
 					</form>
 					<div id="accordion" class="accordion-area">
@@ -180,7 +215,7 @@
 							@endif
 							<img src="resources/img/product/{{$sl->hinh}}" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="{{route('chi-tiet-san-pham',$sl->id)}}" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>

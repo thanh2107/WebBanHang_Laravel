@@ -22,9 +22,6 @@ class HomeController extends Controller
         $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
         $new_product = SanPham::where('moi',1)->paginate(10); /* chỉ lấy ra 5 sản phẩm mới */
         $best_selling = SanPham::orderby('da_ban','desc')->get();
-       // $new_product = SanPham::where('new',1)->get();
-       // dd($new_product);
-    	//return view('page.trangchu',['slide' => $slide]);
         return view('page.trangchu',compact('slide','new_product','best_selling','loai'));
     }
      public function getLoaiSp($loaisp){
@@ -125,7 +122,7 @@ class HomeController extends Controller
         
         if(Auth::attempt(['email'=>$req->email,'password'=>$req->password,'level'=>$req->level])||Auth::attempt(['name'=>$req->email,'password'=>$req->password,'level'=>$req->level])){
         // return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công!']);
-              return Redirect::to('index'); 
+              return view('cart.checkout_cart'); 
         }else
         {
 
@@ -138,6 +135,12 @@ class HomeController extends Controller
     public function getLogout(){
         Auth::logout();
       return redirect()->back();
+    }
+
+    public function search(Request $req){
+        $keywords =$req->keywords_submit;
+        $search_product = SanPham::where('ten_san_pham','like','%'.$keywords.'%')->get();
+        return view('page.search',compact('search_product'));
     }
      
 }

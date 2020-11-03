@@ -1460,7 +1460,6 @@ font-size: 12px;
 }
 
 .fw-size-choose input[type=radio] {
-	visibility: hidden;
 	position: absolute;
 }
 
@@ -2481,6 +2480,31 @@ span.style-checkbox{
 	}
 }
 /*custom*/
+select.address-select {
+    width: 100%;
+    height: 44px;
+    border: none;
+    padding: 0 18px;
+    background: #f0f0f0;
+    border-radius: 40px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+input.quatity_input {
+    width: 30px;
+    text-align: center;
+}
+a.btn.btnde99:hover {
+	 color: #F51167;
+}
+span.sale1 {
+    font-size: 12px;
+    float: left;
+    text-decoration: line-through;
+}
+p.p-price1 {
+    color: #F51167;
+}
  a.url-1 {
     display: inline-block;
     font-size: 12px;

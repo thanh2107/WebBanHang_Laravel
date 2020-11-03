@@ -19,7 +19,7 @@ class User extends Authenticatable
     // protected $table = 'nguoi_dung';    
 
     protected $fillable = [
-        'name', 'email', 'password','level',
+        'name', 'id', 'email', 'password','level','address',
     ];
 
     /**
@@ -39,4 +39,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+     public function hoadon(){
+        return $this->hasMany('App\Models\HoaDon','id_user','id');
+    }
 }

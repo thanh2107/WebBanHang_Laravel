@@ -22,6 +22,11 @@
 			'uses'=>'App\Http\Controllers\HomeController@getIndex',
 			'as'=>'trang-chu'
 		]);
+		Route::post('search',[
+
+			'uses'=>'App\Http\Controllers\HomeController@search',
+			'as'=>'search'
+		]);
 
 
 		Route::get('loai-san-pham/{loaisp}',[
@@ -229,4 +234,15 @@
 			'as'=>'update_detail_product'
 		]);
 			//cart
-		Route::post('add-cart','App\Http\Controllers\CartController@add_cart');
+		Route::post('add-cart/{id_product}',[
+
+			'uses'=>'App\Http\Controllers\CartController@add_cart',
+			'as'=>'add-cart'
+		]);
+		
+		Route::post('update-cart-quantity','App\Http\Controllers\CartController@update_cart');
+		Route::get('show-cart','App\Http\Controllers\CartController@show_cart');
+		Route::get('delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
+		//check out
+		Route::get('check-login','App\Http\Controllers\CheckOutController@login_checkout');
+		Route::post('save-checkout','App\Http\Controllers\CheckOutController@save_checkout');

@@ -1,8 +1,16 @@
 
-
 @extends('home')
 @section('content')
 	<!-- Hero section -->
+	{{-- <?php
+	
+	$user = Auth::user();
+	
+	$user ->address = "a";
+	$user ->save();
+	echo $user ->address;
+
+	?> --}}
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
 			@foreach($slide as $sl)
@@ -54,7 +62,7 @@
 						<div class="tag-new">New</div>
 						<img src="resources/img/product/{{$new->hinh}}" alt="">
 						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>thêm vào giỏ</span></a>
+							<a href="{{route('chi-tiet-san-pham',$new->id)}}" class="add-card"><i class="flaticon-bag"></i><span>thêm vào giỏ</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 						</div>
 					</div>
@@ -80,7 +88,7 @@
 			</div>
 			<ul class="product-filter-menu">
 				@foreach($loai as $ls)
-				<li><a href="#">{{$ls->ten_LSP}}</a></li>
+				<li><a href="{{route('loai-san-pham',$ls->id_loai_san_pham)}}">{{$ls->ten_LSP}}</a></li>
 				@endforeach
 		
 			</ul>						
@@ -95,7 +103,7 @@
 							@endif
 							<img src="resources/img/product/{{$sl->hinh}}" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+								<a href="{{route('chi-tiet-san-pham',$sl->id)}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						
