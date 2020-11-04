@@ -4,7 +4,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Liệt kê danh mục sản phẩm
+     Danh sách đơn hàng
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-4">
@@ -30,35 +30,30 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
-            <th>Tên danh mục</th>
-            <th>Mô tả</th>
-            <th>Trạng thái</th>
+            
+            <th>Mã</th>
+            <th>Tên người đặt</th>
+            <th>Tổng giá tiền</th>
+            <th>Phương thức thanh toán</th>
+            <th>Ngày đặt hàng</th>
+             <th>Trạng thái</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-          @foreach($all_category as $category)
+          @foreach($all_order as $order)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$category ->ten_LSP}}</td>
-            <td><span class="text-ellipsis">{{$category ->mo_ta}}</span></td>
+            <td>{{$order->id_hoa_don}}</td>
+            <td>{{$order->user->name}}</td>
+            <td><span class="text-ellipsis">{{number_format($order ->tong_tien)}}₫</span></td>
+            <td><span class="text-ellipsis">{{$order ->thanh_toan}}</span></td>
+            <td><span class="text-ellipsis">{{$order ->ngay_mua}}</span></td>
+            <td><span class="text-ellipsis">{{$order ->trang_thai}}</span></td>
             <td>
-              @if($category->trang_thai==0)
-              <span class="text-ellipsis">Ẩn</span>
-              @else
-              <span class="text-ellipsis">Hiển thị</span>
-              @endif
-            </td>
-            <td>
-              <a href="{{route('edit_category',$category->id_loai_san_pham)}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-pencil-square-o fa-check text-success text-active"></i>
+              <a href="{{route('view-order',$order->id_hoa_don)}}" class="active styling-edit" ui-toggle-class="">
+                <i class="fa fa-eye fa-check text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có muốn chắc chắn xoá danh mục [{{$category->ten_LSP}}] ?')" href="{{route('delete_category',$category->id_loai_san_pham)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có muốn chắc chắn xoá danh mục [] ?')" href="" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -71,7 +66,7 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of {{count($category)}} items</small>
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of {{count($all_order)}} items</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">

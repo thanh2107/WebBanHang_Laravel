@@ -123,10 +123,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
-                        <span>Form Components</span>
+                        <span>Đơn hàng</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="form_component.html">Form Elements</a></li>
+                        <li><a href="{{route('manage-orders')}}">Quản lý đơn hàng</a></li>
                         <li><a href="form_validation.html">Form Validation</a></li>
 						<li><a href="dropzone.html">Dropzone</a></li>
                     </ul>
@@ -194,7 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p style="text-align: center;">All rights reserved | Powered <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" target="_blank">Loriem</a></p>
 			</div>
 		  </div>
   <!-- / footer -->

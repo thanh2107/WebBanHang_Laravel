@@ -246,3 +246,12 @@
 		//check out
 		Route::get('check-login','App\Http\Controllers\CheckOutController@login_checkout');
 		Route::post('save-checkout','App\Http\Controllers\CheckOutController@save_checkout');
+		//bill_orders
+		Route::get('manage-orders',[
+			'uses'=>'App\Http\Controllers\AdminController@manage_orders',
+			'as'=>'manage-orders'
+		]);
+		Route::get('view-order/{order_id}',[
+			'uses'=>'App\Http\Controllers\AdminController@view_order',
+			'as'=>'view-order'
+		]);

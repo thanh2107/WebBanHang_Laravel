@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ChiTietHD;
+use App\Models\HoaDon;
+use App\Models\User;
 use Hash;
 use Auth;
 use Session;
@@ -73,6 +76,21 @@ class AdminController extends Controller
          $this->AuthLogin();
         Auth::logout();
       return view('admin_login');
+    
+        }
+        public function manage_orders(){
+         $this->AuthLogin();
+        $all_order = HoaDon::all();
+        $all_detail_order = ChiTietHD::all();
+        return view('admin.manage_orders',compact('all_order','all_detail_order'));
+    
+        }
+         public function view_order($order_id){
+         $this->AuthLogin();
+        $order = HoaDon::where('id_hoa_don',$order_id)->first();
+        $detail_order = ChiTietHD::where('id_hoa_don',$order_id)->get();
+
+        return view('admin.view_order',compact('order','detail_order','order_id'));
     
         }
 }
