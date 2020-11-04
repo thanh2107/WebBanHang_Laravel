@@ -106,7 +106,15 @@
 			'uses'=>'App\Http\Controllers\AdminController@getLogout',
 			'as'=>'admin_logout'
 		]);
-
+		//bill_orders_admin
+		Route::get('manage-orders',[
+			'uses'=>'App\Http\Controllers\AdminController@manage_orders',
+			'as'=>'manage-orders'
+		]);
+		Route::get('view-order/{order_id}',[
+			'uses'=>'App\Http\Controllers\AdminController@view_order',
+			'as'=>'view-order'
+		]);
 
 		//slide 
 		Route::get('all-slide',[
@@ -246,12 +254,16 @@
 		//check out
 		Route::get('check-login','App\Http\Controllers\CheckOutController@login_checkout');
 		Route::post('save-checkout','App\Http\Controllers\CheckOutController@save_checkout');
-		//bill_orders
-		Route::get('manage-orders',[
-			'uses'=>'App\Http\Controllers\AdminController@manage_orders',
-			'as'=>'manage-orders'
+		//order
+
+		
+		Route::get('orders/{id_user}',[
+
+			'uses'=>'App\Http\Controllers\HomeController@manage_orders_customer',
+			'as'=>'orders'
 		]);
-		Route::get('view-order/{order_id}',[
-			'uses'=>'App\Http\Controllers\AdminController@view_order',
-			'as'=>'view-order'
+
+		Route::get('view-order-customer/{order_id}',[
+			'uses'=>'App\Http\Controllers\HomeController@view_order_customer',
+			'as'=>'view-order-customer'
 		]);

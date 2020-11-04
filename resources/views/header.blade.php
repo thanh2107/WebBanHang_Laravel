@@ -28,7 +28,8 @@
 									<li><i class="flaticon-profile"></i></li>
 									<li><a href="#">{{Auth::user()->name}}</a> 
 										<ul class="sub-menu">
-											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>Đăng xuất</a></li>
+											<li><a href="{{route('logout')}}"><i class="fa fa-key"></i>   Đăng xuất</a></li>
+											<li><a href="{{route('orders',Auth::user()->id)}}"><i class="fa fa-tasks"></i> Đơn hàng</a></li>
 										</ul>	
 									</li>
 								</ul>	

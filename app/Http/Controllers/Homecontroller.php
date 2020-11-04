@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\SanPham;
+use App\Models\HoaDon;
+use App\Models\ChiTietHD;
 use App\Models\LoaiSP;
 use App\Models\ChiTietSP;
 use App\Models\NguoiDung;
@@ -16,7 +18,7 @@ use Session;
 
 class HomeController extends Controller
 {
-  
+ 
     public function getIndex(){
         $slide = Slide:: where('trang_thai',1)->get();
         $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
@@ -142,5 +144,31 @@ class HomeController extends Controller
         $search_product = SanPham::where('ten_san_pham','like','%'.$keywords.'%')->get();
         return view('page.search',compact('search_product'));
     }
-     
+        public function manage_orders_customer($id_user){
+             if(!Auth::check())
+            {   
+                 return view('page.login_register');
+                
+            }
+            else
+            {   
+         
+        $all_order = HoaDon::where('id_user',$id_user)->get();
+        $all_detail_order = ChiTietHD::all();
+        return view('page.order',compact('all_order','all_detail_order'));
+        }
+     }
+      public function view_order_customer($order_id){
+          if(!Auth::check())
+            {   
+                 return view('page.login_register');
+                
+            }
+            else
+            {   
+         
+        $order = HoaDon::where('id_hoa_don',$order_id)->first();
+        $detail_order = ChiTietHD::where('id_hoa_don',$order_id)->get();
+        return view('page.view_order_customer',compact('order','detail_order','order_id'));
+        }}
 }

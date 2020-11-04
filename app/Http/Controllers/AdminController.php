@@ -15,10 +15,6 @@ class AdminController extends Controller
     //
 
 
-
-
-
-
     public function AuthLogin(){
 
             if(Auth::check()&&Auth::user()->level=='3')
@@ -89,9 +85,7 @@ class AdminController extends Controller
          $this->AuthLogin();
         $order = HoaDon::where('id_hoa_don',$order_id)->first();
         $detail_order = ChiTietHD::where('id_hoa_don',$order_id)->get();
-
         return view('admin.view_order',compact('order','detail_order','order_id'));
-    
         }
 }
 
