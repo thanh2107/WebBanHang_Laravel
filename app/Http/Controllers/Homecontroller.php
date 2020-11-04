@@ -81,7 +81,7 @@ class HomeController extends Controller
                 'email.unique'=>'Email đã có người sử dụng',
                 'username.unique'=>'username đã có người sử dụng',
                 'username.min'=>'Nhập username ít nhất 6 kí tự',
-                'username.alpha_dash'=>'Nhập username phải là chữ hoặc số, bao gồm dấu gạch ngang và gạch dưới',
+                'username.alpha_dash'=>'Nhập username phải là chữ hoặc số, bao gồm dấu gạch ngang và không được có khoảng trắng',
                 'password.required'=>'Vui lòng nhập mật khẩu',
                 'password.min'=>'Nhập mật khẩu ít nhất 6 kí tự',
                 'confirmpassword.required'=>'Vui lòng nhập mật khẩu xác nhận',

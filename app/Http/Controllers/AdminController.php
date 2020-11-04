@@ -34,7 +34,14 @@ class AdminController extends Controller
     }
     public function show_dashboard(){
             $this->AuthLogin();
-    		return view('admin.dashboard');
+
+            $HoaDon=  HoaDon::all();
+
+            $users = User::all()->except(Auth::id());
+           $Countusers  = count($users);
+          $CountBill = count($HoaDon);
+    
+              return view('admin.dashboard',compact('CountBill','Countusers'));
     }
     public function dashboard(Request $req){
  	 Session::put('last_auth_attempt', 'admin_login');
@@ -58,7 +65,12 @@ class AdminController extends Controller
         
         if(Auth::attempt(['email'=>$req->admin_email,'password'=>$req->admin_password,'level'=>$req->level])||Auth::attempt(['name'=>$req->admin_email,'password'=>$req->admin_password,'level'=>$req->level])){
 
-        return view('admin.dashboard');
+          $HoaDon=  HoaDon::all();
+
+            $users = User::all()->except(Auth::id());
+           $Countusers  = count($users);
+          $CountBill = count($HoaDon);
+        return view('admin.dashboard',compact('CountBill','Countusers'));
 
         }else
         {
@@ -86,6 +98,14 @@ class AdminController extends Controller
         $order = HoaDon::where('id_hoa_don',$order_id)->first();
         $detail_order = ChiTietHD::where('id_hoa_don',$order_id)->get();
         return view('admin.view_order',compact('order','detail_order','order_id'));
+        }
+        public function confirm_order($order_id){
+         $this->AuthLogin();
+        $data['trang_thai'] = 'Đã xác nhận giao hàng';
+        HoaDon::where('id_hoa_don',$order_id)->update($data);
+
+         Session::put('message', 'Đã xác nhận giao hàng');
+         return redirect()->back();
         }
 }
 

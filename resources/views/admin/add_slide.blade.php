@@ -27,7 +27,7 @@
 
 
             <div class="position-center">
-                <form role="form" name="mainForm" action="{{'save_slide'}}" method="post" enctype="multipart/form-data">
+                <form role="form" name="mainForm" action="{{'save-slide'}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tên slide</label>

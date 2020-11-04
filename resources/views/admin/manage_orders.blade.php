@@ -53,9 +53,7 @@
               <a href="{{route('view-order',$order->id_hoa_don)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-eye fa-check text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có muốn chắc chắn xoá danh mục [] ?')" href="" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-times text-danger text"></i>
-              </a>
+             
             </td>
           </tr>
           @endforeach

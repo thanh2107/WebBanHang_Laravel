@@ -115,6 +115,10 @@
 			'uses'=>'App\Http\Controllers\AdminController@view_order',
 			'as'=>'view-order'
 		]);
+		Route::get('confirm-order/{order_id}',[
+			'uses'=>'App\Http\Controllers\AdminController@confirm_order',
+			'as'=>'confirm-order'
+		]);
 
 		//slide 
 		Route::get('all-slide',[

@@ -58,10 +58,10 @@
 				<!-- menu -->
 				<ul class="main-menu">
 					<li><a href= "{{route('trang-chu')}}">Trang chủ</a></li>
-					<li><a href="#">Đồng giá</a>
+					<li><a href="">Đồng giá</a>
 						<ul class="sub-menu">
 							@foreach($dong_gia as $dg)
-							<li><a href="product.html">{{$dg->ten_donggia}}</a></li>
+							<li><a href="">{{$dg->ten_donggia}}</a></li>
 							@endforeach
 						</ul>	
 					</li>
@@ -76,7 +76,7 @@
 							
 						</ul>
 					</li>
-					<li><a href="#">Phụ kiện
+					<li><a href="{{route('loai-san-pham','14')}}">Áo vest
 						<span class="new">Mới</span>
 					</a></li>
 					<li><a href="#">Cửa hàng</a>
@@ -87,8 +87,8 @@
 	
 						</ul>
 					</li>
-					<li><a href="#">Sự kiện</a></li>
-					<li><a href="#">Reviews</a></li>
+				{{-- 	<li><a href="#">Sự kiện</a></li>
+					<li><a href="#">Reviews</a></li> --}}
 					<li><a href="{{route('lien-he')}}">Liên hệ</a></li>
 				</ul>
 			</div>

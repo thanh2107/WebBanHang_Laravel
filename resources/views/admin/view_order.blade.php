@@ -2,11 +2,19 @@
 @extends('admin_layout')
 @section('admin_content')
 <div id="invoice">
+    <?php
+        $message = Session::get('message');
+        if($message){
 
+          echo '<span class="alert alert-danger errorI">'.$message.'</span>';
+          Session::put('message',null);
+        }
+        ?>
     <div class="toolbar hidden-print">
         <div class="text-right">
-            <button value="click" onclick="printDiv()" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
+            <button value="click" onclick="printDiv()" class="btn btn-dark"><i class="fa fa-print"></i> Print</button>
             <a href="{{route('manage-orders')}}"><button  class="btn btn-info"><i class="fa fa-backward"></i> Quay lại</button></a>
+            <a href="{{route('confirm-order',$order_id)}}"><button  class="btn btn-danger"><i class="fa fa-check"></i> Xác nhận đơn hàng</button></a>
         </div>
         <hr>
     </div>

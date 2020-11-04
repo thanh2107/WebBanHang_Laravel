@@ -74,13 +74,7 @@
 								<h3 class="p-price">{{number_format($sanpham->gia)}}₫</h3>
 							@endif
 					<h4 class="p-stock">Available: <span>In Stock</span></h4>
-					<div class="p-rating">
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o fa-fade"></i>
-					</div>
+				
 					
 					<table style="max-width: 60%" class="table table-sm">
   <thead>
@@ -108,9 +102,7 @@
 </table>
 
 
-					<div class="p-review">
-						<a href="">3 reviews</a>|<a href="">Add your review</a>
-					</div>
+				
 					<form role="form" action="{{route('add-cart',$sanpham->id)}}" method="post">
  						{{csrf_field()}}
                     <div class="fw-size-choose">

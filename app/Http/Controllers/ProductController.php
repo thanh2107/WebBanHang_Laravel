@@ -189,7 +189,7 @@ public function delete_product($id_san_pham){
    else
    {
     $product =  SanPham::where('id',$id_san_pham)->first();
-  $namefile = "resources/img/product/".rtrim($product->ten_file, "/");
+    $namefile = "resources/img/product/".rtrim($product->ten_file, "/");
    // dd($namefile);
      array_map('unlink', glob("$namefile/*.*"));
     if(rmdir($namefile)){

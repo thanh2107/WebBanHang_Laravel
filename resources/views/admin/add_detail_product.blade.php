@@ -80,55 +80,6 @@
 
                         </script>
                     </div>
-                    <div class="col-md-12">
-       
-        <div class="table-agile-info">
- <div class="panel panel-default">
-    <div>
-      <table class="table" ui-jq="footable" ui-options='{
-        "paging": {
-          "enabled": true
-        },
-        "filtering": {
-          "enabled": true
-        },
-        "sorting": {
-          "enabled": true
-        }}'>
-        <thead>
-          <tr>
-            <th data-breakpoints="xs">ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th data-breakpoints="xs">Job Title</th>
-           
-            <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-expanded="true">
-            <td>1</td>
-            <td>Dennise</td>
-            <td>Fuhrman</td>
-            <td>High School History Teacher</td>
-            
-            <td>July 25th 1960</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Elodia</td>
-            <td>Weisz</td>
-            <td>Wallpaperer Helper</td>
-          
-            <td>March 30th 1982</td>
-          </tr>
-          
-        </tbody>
-      </table>
-    </div>  
-  </div>
-</div>
-                    </div>
                     <div class="col-md-6 form-group col-not-pdleft">
                         <label for="exampleInputEmail1">Màu sắc</label>
                         <select name="color_product" class="form-control input-sm m-bot15 input_size">
