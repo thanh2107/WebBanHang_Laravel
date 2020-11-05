@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class DongGia extends Model
 {
-    protected $table = "dong_gia";
+   protected $table = "dong_gia";
 }

@@ -58,14 +58,14 @@
 							</span>
 						</p>
 						<p class="woocommerce-LostPassword lost_password">
-							<a href="">Quên mật khẩu?</a>
+							<a href="{{route('reset-password')}}">Quên mật khẩu?</a>
 						</p>
 					</form>
 				</div>
 			</div>
 			<div class="col-sm-6" >
 				<div class="form-register">
-					<h2>Đăng kí</h2>
+					<h2>Đăng ký</h2>
 					<form id="register" action="{{route('register')}}" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 								

@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slide;
+use Illuminate\Support\Str;
 use App\Models\SanPham;
 use App\Models\HoaDon;
 use App\Models\ChiTietHD;
 use App\Models\LoaiSP;
 use App\Models\ChiTietSP;
 use App\Models\NguoiDung;
+use App\Models\ResetPassword;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Hash;
 use Auth;
 use Session;
-
+use Mail;
 class HomeController extends Controller
 {
  
@@ -23,6 +25,27 @@ class HomeController extends Controller
         $slide = Slide:: where('trang_thai',1)->get();
         $loai = LoaiSP::paginate(8); /* chỉ lấy ra 8 dah muc sản phẩm mới */
         $new_product = SanPham::where('moi',1)->paginate(10); /* chỉ lấy ra 5 sản phẩm mới */
+        //su lý gộp đã bán
+        $chitietsp = ChiTietSP::all();
+        $sanpham = SanPham::all();
+        $count = 0;
+        foreach ($sanpham as $sp) {
+       
+            foreach($chitietsp as $ct) {
+                if($ct->id_san_pham ==$sp->id)
+                {
+                    $count = $count+$ct->da_ban;
+
+                }
+            }
+            if($count!=0)
+            {
+                $daban['da_ban'] =$count;
+                SanPham::where('id', $sp->id)->update($daban);
+                $count = 0;
+            }
+        }
+
         $best_selling = SanPham::orderby('da_ban','desc')->get();
         return view('page.trangchu',compact('slide','new_product','best_selling','loai'));
     }
@@ -62,6 +85,73 @@ class HomeController extends Controller
 
         return view('page.login_register');
     }
+     public function reset_password(){
+
+        return view('page.reset_pass');
+    }
+
+
+
+    public function getForgotPassword(Request $request)
+    {
+        $email = $request->email;
+        //Tạo token và gửi đường link reset vào email nếu email tồn tại
+        $result = User::where('email', $request->email)->first();
+        if($result){
+            $resetPassword = ResetPassword::firstOrCreate(['email'=>$request->email, 'token'=>Str::random(60)]);
+            $token = ResetPassword::where('email', $request->email)->first();
+            $url = route('get-reset-password',['code' => $resetPassword->token]);
+             //send it to email
+               $data = [
+                'link' => $url
+            ];
+            Mail::send('page.reset_pass_to_mail', $data, function($message) use ($email){
+                $message->from('tyn01685732770@gmail.com', 'Thời trang loriem');
+                $message->to($email, 'Visitor')->subject('Quên mật khẩu từ cửa hàng thời trang loriem');
+                
+            });
+            return redirect()->back()->with(['flag'=>'success','message'=>'Thông báo: Link lấy lại mật khẩu đã được gửi vào email của bạn!']);
+        } else {
+            echo 'Email không có trong hệ thống, vui lòng kiểm tra lại';
+        }
+        
+    }
+    public function resetPassword(Request $request)
+    {
+        // Check token valid or not
+        $result = ResetPassword::where('token', $request->token)->first();
+        if($result){ 
+            $this->validate($request,
+
+            [   
+ 
+                'password'=>'required|min:6|max:20',
+                'confirmpassword'=>'required|same:password',
+            
+            ],
+            [
+                'password.required'=>'Vui lòng nhập mật khẩu',
+                'password.min'=>'Nhập mật khẩu ít nhất 6 kí tự',
+                'confirmpassword.required'=>'Vui lòng nhập mật khẩu xác nhận',
+                'confirmpassword.same'=>'Mật khẩu không giống nhau'   
+
+            ]);
+            $email = $result->email;
+            $data_pass['password'] = Hash::make($request->password);
+            User::where('email', $email)->update($data_pass);
+            ResetPassword::where('token', $request->token)->delete();
+           return redirect()->back()->with(['flag'=>'success','message'=>'Đổi mật khẩu thành công!']);
+        } else {
+            echo 'This link is expired';
+        }
+    }
+    public function getFormResetPassword(Request $request){
+          $code = $request->code;
+        return view('page.reset',compact('code'));
+    }
+
+
+
        public function postRegister(Request $req){
          Session::put('last_auth_attempt', 'register');
         $this->validate($req,

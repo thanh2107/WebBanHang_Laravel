@@ -130,16 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                     </ul>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="mail.html">Inbox</a></li>
-                        <li><a href="mail_compose.html">Compose Mail</a></li>
-                    </ul>
-                </li>
+              
             </ul>            </div>
         <!-- sidebar menu end-->
     </div>

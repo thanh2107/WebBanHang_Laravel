@@ -17,7 +17,7 @@
 		// });
 
 
-		Route::get('index',[
+		Route::get('/',[
 
 			'uses'=>'App\Http\Controllers\HomeController@getIndex',
 			'as'=>'trang-chu'
@@ -84,7 +84,26 @@
 			'uses'=>'App\Http\Controllers\HomeController@getLogout',
 			'as'=>'logout'
 		]);
+		Route::get('reset-password',[
 
+			'uses'=>'App\Http\Controllers\HomeController@reset_password',
+			'as'=>'reset-password'
+		]);
+		Route::post('send_email_verify',[
+
+			'uses'=>'App\Http\Controllers\HomeController@getForgotPassword',
+			'as'=>'send_email_verify'
+		]);
+		Route::get('get-reset-password',[
+
+			'uses'=>'App\Http\Controllers\HomeController@getFormResetPassword',
+			'as'=>'get-reset-password'
+		]);
+		Route::post('post-reset-password',[
+
+			'uses'=>'App\Http\Controllers\HomeController@resetPassword',
+			'as'=>'post-reset-password'
+		]);
 		//Admin
 		Route::get('admin',[
 

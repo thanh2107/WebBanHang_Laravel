@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SanPham;
 use App\Models\LoaiSP;
-use App\Models\HinhSP;
 use App\Models\MauSP;
 use App\Models\SizeSP;
 use App\Models\ChiTietHD;
@@ -31,12 +30,11 @@ class DetailProductController extends Controller
 		     public function add_detail_product(){
 		     	$this->AuthLogin();
 		     	$all_category_product = LoaiSP::all();
-		     	$image_product = HinhSP::all();
 		     	$color_product = MauSP::all();
 		     	$size_product = SizeSP::all();
 		     	$product = SanPham::all();
 		     	
-		     	return view('admin.add_detail_product',compact('all_category_product','product','color_product','image_product','size_product'));
+		     	return view('admin.add_detail_product',compact('all_category_product','product','color_product','size_product'));
 		     }
 
 		     public function all_detail_product(){

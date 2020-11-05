@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2020 lúc 10:14 AM
+-- Thời gian đã tạo: Th10 05, 2020 lúc 03:12 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.6
 
@@ -49,7 +49,10 @@ INSERT INTO `chi_tiet_hd` (`id_chi_tiet_HD`, `id_hoa_don`, `id_chi_tiet_sp`, `so
 (12, 23, 79, 1, 208000, '2020-11-04 08:54:23', NULL),
 (13, 24, 97, 1, 440000, '2020-11-04 08:55:32', NULL),
 (14, 24, 91, 1, 393000, '2020-11-04 08:55:32', NULL),
-(15, 25, 49, 1, 533000, '2020-11-04 08:59:58', NULL);
+(15, 25, 49, 1, 533000, '2020-11-04 08:59:58', NULL),
+(16, 26, 70, 1, 162000, '2020-11-05 13:06:11', NULL),
+(17, 26, 60, 1, 370000, '2020-11-05 13:06:11', NULL),
+(18, 26, 48, 1, 533000, '2020-11-05 13:06:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -74,7 +77,7 @@ CREATE TABLE `chi_tiet_sp` (
 
 INSERT INTO `chi_tiet_sp` (`id`, `id_san_pham`, `id_mau`, `id_size`, `soluong`, `da_ban`, `created_at`, `updated_at`) VALUES
 (47, 259, 6, 1, '200', 0, NULL, NULL),
-(48, 259, 6, 2, '200', 0, NULL, NULL),
+(48, 259, 6, 2, '200', 1, NULL, '2020-11-05 13:06:11'),
 (49, 259, 6, 3, '50', 1, NULL, '2020-11-04 08:59:58'),
 (50, 258, 7, 2, '200', 0, NULL, NULL),
 (51, 258, 7, 3, '200', 0, NULL, NULL),
@@ -86,7 +89,7 @@ INSERT INTO `chi_tiet_sp` (`id`, `id_san_pham`, `id_mau`, `id_size`, `soluong`, 
 (57, 260, 7, 2, '20', 0, NULL, NULL),
 (58, 260, 7, 1, '200', 0, NULL, NULL),
 (59, 262, 8, 1, '222', 0, NULL, NULL),
-(60, 262, 8, 2, '222', 0, NULL, NULL),
+(60, 262, 8, 2, '222', 1, NULL, '2020-11-05 13:06:11'),
 (61, 262, 1, 2, '222', 0, NULL, NULL),
 (62, 262, 7, 1, '212', 0, NULL, NULL),
 (63, 262, 7, 2, '213', 1, NULL, '2020-11-04 08:54:23'),
@@ -96,7 +99,7 @@ INSERT INTO `chi_tiet_sp` (`id`, `id_san_pham`, `id_mau`, `id_size`, `soluong`, 
 (67, 263, 10, 3, '222', 0, NULL, NULL),
 (68, 263, 11, 1, '12', 0, NULL, NULL),
 (69, 264, 6, 1, '222', 0, NULL, NULL),
-(70, 264, 6, 3, '2222', 0, NULL, NULL),
+(70, 264, 6, 3, '2222', 1, NULL, '2020-11-05 13:06:11'),
 (71, 265, 5, 1, '222', 0, NULL, NULL),
 (72, 265, 5, 2, '222', 0, NULL, NULL),
 (73, 265, 10, 1, '23', 0, NULL, NULL),
@@ -148,18 +151,11 @@ INSERT INTO `chi_tiet_sp` (`id`, `id_san_pham`, `id_mau`, `id_size`, `soluong`, 
 
 CREATE TABLE `dong_gia` (
   `id` int(11) UNSIGNED NOT NULL,
-  `ten_donggia` varchar(255) NOT NULL,
-  `href` varchar(255) NOT NULL
+  `ten_donggia` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `dong_gia`
---
-
-INSERT INTO `dong_gia` (`id`, `ten_donggia`, `href`) VALUES
-(1, 'Đồng giá 99k', ''),
-(2, 'Đồng giá 199k', ''),
-(3, 'Đồng giá 149k', '');
 
 -- --------------------------------------------------------
 
@@ -176,34 +172,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `hinh_sp`
---
-
-CREATE TABLE `hinh_sp` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `ten_bst_hinh` varchar(45) NOT NULL,
-  `link_hinh` varchar(50) NOT NULL,
-  `h1_show` varchar(45) DEFAULT NULL,
-  `h2` varchar(45) DEFAULT NULL,
-  `h3` varchar(45) DEFAULT NULL,
-  `h4` varchar(45) DEFAULT NULL,
-  `h5` varchar(45) DEFAULT NULL,
-  `h6` varchar(45) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `hinh_sp`
---
-
-INSERT INTO `hinh_sp` (`id`, `ten_bst_hinh`, `link_hinh`, `h1_show`, `h2`, `h3`, `h4`, `h5`, `h6`, `created_at`, `updated_at`) VALUES
-(1, 'Đầm Cắt Màu xanh Bạc hà Boho', 'resources/img/product/damholo1', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', NULL, '2020-10-15 04:31:34', '2020-10-15 04:31:34'),
-(22, 'tesst', 'tesst', NULL, NULL, NULL, NULL, NULL, NULL, '2020-10-15 04:31:34', '2020-10-15 04:31:34');
 
 -- --------------------------------------------------------
 
@@ -231,25 +199,8 @@ INSERT INTO `hoa_don` (`id_hoa_don`, `id_user`, `ngay_mua`, `tong_tien`, `thanh_
 (22, 1, '2020-11-04', 830000, 'COD', 'Giao hang vào giờ hành chính', 'Đang chờ xử lý', '2020-11-04 07:51:13', '2020-11-04 07:51:13'),
 (23, 4, '2020-11-04', 786000, 'COD', 'Giao Sớm', 'Đã xác nhận giao hàng', '2020-11-04 08:56:09', '2020-11-04 08:56:09'),
 (24, 4, '2020-11-04', 853000, 'COD', 'Giao vào buổi chiều', 'Đang chờ xử lý', '2020-11-04 08:55:32', '2020-11-04 08:55:32'),
-(25, 5, '2020-11-04', 553000, 'COD', 'Giao hàng Sớm', 'Đang chờ xử lý', '2020-11-04 08:59:58', '2020-11-04 08:59:58');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `khach_hang`
---
-
-CREATE TABLE `khach_hang` (
-  `id_khach_hang` int(10) UNSIGNED NOT NULL,
-  `ten_kh` varchar(100) NOT NULL,
-  `gioi_tinh` varchar(10) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `dia_chi` varchar(255) NOT NULL,
-  `sdt` varchar(20) NOT NULL,
-  `ghi_chu` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(25, 5, '2020-11-04', 553000, 'COD', 'Giao hàng Sớm', 'Đang chờ xử lý', '2020-11-04 08:59:58', '2020-11-04 08:59:58'),
+(26, 1, '2020-11-05', 1085000, 'COD', 'Giao hang vào giờ hành chính', 'Đang chờ xử lý', '2020-11-05 13:06:11', '2020-11-05 13:06:11');
 
 -- --------------------------------------------------------
 
@@ -340,42 +291,24 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nguoi_dung`
---
-
-CREATE TABLE `nguoi_dung` (
-  `id_nguoi_dung` int(10) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `level` int(10) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `dia_chi` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `sdt` varchar(20) DEFAULT NULL,
-  `remember_token` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `nguoi_dung`
---
-
-INSERT INTO `nguoi_dung` (`id_nguoi_dung`, `username`, `level`, `email`, `dia_chi`, `password`, `sdt`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'thanh2107', 0, 'tyn01685732770@gmail.com', 'Ấp thới đông hòa châu thành Tiền Giang', '$2y$10$AN55mlLoyM9C1PQmbphfbOm.X9D5QGSmRBHR0FIf5BR2aJ5oz8Lxa', '0859278875', NULL, '2020-10-16 15:39:36', '2020-10-16 15:39:36'),
-(3, 'thanh dep trai', 0, '1751012095thanh@ou.edu.vn', 'noop', '$2y$10$S.UtjVoVNigwANNGP1l4meiwuCxXq17fHBMgcJ3GrRC2E8PYoSTeW', '07750411852', NULL, '2020-10-17 03:16:23', '2020-10-17 03:16:23'),
-(4, 'test', 0, 'test@gmail.com', 'sdsadsad', '$2y$10$T92MQf8Ov2LNvi2ktmTG5urDv3WKuZH1lWtoRyTUFzZjSrsADoEee', '6656565656', NULL, '2020-10-17 04:53:35', '2020-10-17 04:53:35');
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `password_resets`
 --
 
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`, `updated_at`) VALUES
+('t01685732770@gmail.com', 'aK6MOA0szpzNbMGamIlNjQJzZxvTXtQ0QRl3Hdwyfap2XY6d8iqHGfWKJjYc', '2020-11-05 01:50:04', '2020-11-05 01:50:04'),
+('t01685732770@gmail.com', 'JF7XeecFp0ulhxcspXDdJ7Ovp9PwWHBGIjXqFndpot7UVmmsdatYTHLkD7zA', '2020-11-05 01:58:56', '2020-11-05 01:58:56'),
+('t01685732770@gmail.com', 'OKPgDhOl2voqWc7xWDGQkDGuVZtYJLWqXf5HIB6h1euww0edSUcURRaQ8OcG', '2020-11-05 09:33:39', '2020-11-05 09:33:39');
 
 -- --------------------------------------------------------
 
@@ -410,30 +343,30 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`id`, `ten_san_pham`, `hinh`, `id_loai_san_pham`, `mo_ta`, `phong_cach`, `kieu_mau`, `thanh_phan`, `gia`, `gia_khuyen_mai`, `moi`, `da_ban`, `ten_file`, `h1`, `h2`, `h3`, `h4`, `created_at`, `updated_at`) VALUES
-(258, 'Đầm Nút Sọc ca rô Giải trí', 'Dam-Nut-Soc-ca-ro-Giai-tri2801_51_52.png', 16, 'Đầm Nút Sọc ca rô Giải trí	Nút, Nút phía trước\r\nChiều dài tay:	Tay áo dài\r\nLoại tay áo:	Thả vai', 'Giải trí', 'Sọc ca rô', '100% Polyester', 370000, 259000, 0, 0, 'Dam-Nut-Soc-ca-ro-Giai-tri/', 'Dam-Nut-Soc-ca-ro-Giai-tri2201_51_52.jpg', 'Dam-Nut-Soc-ca-ro-Giai-tri1501_51_52.png', 'Dam-Nut-Soc-ca-ro-Giai-tri501_51_52.jpg', 'Dam-Nut-Soc-ca-ro-Giai-tri8601_51_52.jpg', NULL, '2020-11-04 08:24:17'),
-(259, 'Đầm Dây kéo màu trơn Hấp dẫn', 'Dam-Day-keo-mau-tron-Hap-dan6001_55_34.jpg', 16, 'Đầm Dây kéo màu trơn Hấp dẫn \r\nKiểu mẫu:	màu trơn \r\nViền :	Vòng cổ \r\nChiều dài:	Ngắn', 'Hấp dẫn', 'Phù hợp', '100% Polyester', 533000, 0, 0, 0, 'Dam-Day-keo-mau-tron-Hap-dan/', 'Dam-Day-keo-mau-tron-Hap-dan7301_55_34.jpg', 'Dam-Day-keo-mau-tron-Hap-dan3201_55_34.jpg', 'Dam-Day-keo-mau-tron-Hap-dan7401_55_34.jpg', 'Dam-Day-keo-mau-tron-Hap-dan5501_55_34.jpg', NULL, '2020-11-04 08:24:25'),
-(260, 'Đầm Chia Sọc ca rô Thanh lịch', 'Dam-Chia-Soc-ca-ro-Thanh-lich7002_02_58.jpg', 16, 'Đầm Chia Sọc ca rô Thanh lịch \r\nKiểu:	eo hẹp \r\nChi tiết:	Chia \r\nChiều dài tay:	Không tay \r\nMùa:	Mùa Hè', 'Thanh lịch', 'Eo hẹp', '5% Spandex, 95% Polyester', 162000, 0, 1, 0, 'Dam-Chia-Soc-ca-ro-Thanh-lich/', 'Dam-Chia-Soc-ca-ro-Thanh-lich4702_02_58.jpg', 'Dam-Chia-Soc-ca-ro-Thanh-lich7302_02_58.jpg', 'Dam-Chia-Soc-ca-ro-Thanh-lich1102_02_58.jpg', 'Dam-Chia-Soc-ca-ro-Thanh-lich3902_02_58.jpg', NULL, '2020-11-04 07:23:41'),
-(262, 'Đầm Dây kéo Hoa Nhiều màu Boho', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho5202_31_22.jpg', 16, 'Đầm Dây kéo Hoa Nhiều màu Boho', 'Boho', 'Hoa, Tất cả  in', '100% Polyester', 370000, 0, 1, 0, 'Dam-Day-keo-Hoa-Nhieu-mau-Boho/', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho202_31_22.jpg', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho5402_31_22.jpg', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho8302_31_22.jpg', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho802_31_22.jpg', NULL, '2020-11-04 08:35:08'),
-(263, 'BASICS Áo thun màu trơn Cơ bản', 'BASICS-Ao-thun-mau-tron-Co-ban6102_36_01.jpg', 12, 'BASICS Áo thun màu trơn Cơ bản', 'Cơ bản', 'Màu trơn', '5% Spandex, 95% Bông', 289000, 231000, 1, 0, 'BASICS-Ao-thun-mau-tron-Co-ban/', 'BASICS-Ao-thun-mau-tron-Co-ban6102_36_01.jpg', 'BASICS-Ao-thun-mau-tron-Co-ban3902_36_01.jpg', 'BASICS-Ao-thun-mau-tron-Co-ban6902_36_01.jpg', 'BASICS-Ao-thun-mau-tron-Co-ban8302_36_01.jpg', NULL, NULL),
-(264, 'Áo thun Xù màu trơn Giải trí', 'Ao-thun-Xu-mau-tron-Giai-tri8802_40_37.jpg', 12, 'Áo thun Xù màu trơn Giải trí', 'Giải trí', 'Màu trơn', '34.5% Bông, 3.5% Spandex, 62% Polyester', 162000, 0, 0, 0, 'Ao-thun-Xu-mau-tron-Giai-tri/', 'Ao-thun-Xu-mau-tron-Giai-tri9702_40_37.jpg', 'Ao-thun-Xu-mau-tron-Giai-tri4202_40_37.jpg', 'Ao-thun-Xu-mau-tron-Giai-tri4502_40_37.jpg', 'Ao-thun-Xu-mau-tron-Giai-tri3402_40_37.jpg', NULL, '2020-11-04 08:35:19'),
-(265, 'Áo thun màu trơn Thanh lịch', 'Ao-thun-mau-tron-Thanh-lich4202_45_18.jpg', 12, 'Áo thun màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 255000, 199000, 0, 0, 'Ao-thun-mau-tron-Thanh-lich/', 'Ao-thun-mau-tron-Thanh-lich9702_45_18.jpg', 'Ao-thun-mau-tron-Thanh-lich4602_45_18.jpg', 'Ao-thun-mau-tron-Thanh-lich4202_45_18.jpg', 'Ao-thun-mau-tron-Thanh-lich5202_45_18.jpg', NULL, NULL),
-(266, 'Áo thun Cắt ra màu trơn Gợi cảm', 'Ao-thun-Cat-ra-mau-tron-Goi-cam1302_48_50.jpg', 12, 'Áo thun Cắt ra màu trơn Gợi cảm', 'Gợi cảm', 'Màu trơn', '11% Bông, 3% Spandex, 86% Polyester', 324000, 0, 1, 0, 'Ao-thun-Cat-ra-mau-tron-Goi-cam/', 'Ao-thun-Cat-ra-mau-tron-Goi-cam5502_48_50.jpg', 'Ao-thun-Cat-ra-mau-tron-Goi-cam5202_48_50.jpg', 'Ao-thun-Cat-ra-mau-tron-Goi-cam6502_48_50.jpg', 'Ao-thun-Cat-ra-mau-tron-Goi-cam2802_48_50.jpg', NULL, NULL),
-(267, 'Áo sơ mi Hoa Giải trí', 'Ao-so-mi-Hoa-Giai-tri3702_54_04.jpg', 13, 'Áo sơ mi Hoa Giải trí', 'Giải trí', 'Hoa, Tất cả  in', '100% Polyester', 208000, 0, 1, 0, 'Ao-so-mi-Hoa-Giai-tri/', 'Ao-so-mi-Hoa-Giai-tri2202_54_04.jpg', 'Ao-so-mi-Hoa-Giai-tri6102_54_04.jpg', 'Ao-so-mi-Hoa-Giai-tri1702_54_04.jpg', 'Ao-so-mi-Hoa-Giai-tri9302_54_04.jpg', NULL, NULL),
-(268, 'Áo sơ mi Xù Tất cả trên in Giải trí', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri4402_58_31.jpg', 13, 'Áo sơ mi Xù Tất cả trên in Giải trí', 'Giải trí', 'Beo', '100% Polyester', 260000, 199000, 0, 0, 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri/', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri6902_58_31.jpg', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri4302_58_31.jpg', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri7002_58_31.jpg', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri6902_58_31.jpg', NULL, NULL),
-(269, 'Áo sơ mi Tương phản màu đen Thanh lịch', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich5003_01_42.jpg', 13, 'Áo sơ mi Tương phản màu đen Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 208000, 0, 1, 0, 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich/', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich2603_01_42.jpg', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich7603_01_42.jpg', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich6803_01_42.jpg', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich6403_01_42.jpg', NULL, '2020-11-04 08:03:32'),
-(270, 'Áo sơ mi Pha lê kim cương Thanh lịch', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich803_05_54.jpg', 13, 'Áo sơ mi Pha lê kim cương Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 242000, 241000, 0, 0, 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich/', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich7703_05_54.jpg', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich4503_05_54.jpg', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich2603_05_54.jpg', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich1303_05_54.jpg', NULL, NULL),
-(271, 'Quần đóm  Giải trí', 'Quan-dom--Giai-tri7403_11_03.jpg', 18, 'Quần đóm  Giải trí', 'Giải trí', 'Hoa, Tất cả  in', '100% Polyester', 347000, 215000, 0, 0, 'Quan-dom--Giai-tri/', 'Quan-dom--Giai-tri6703_11_03.jpg', 'Quan-dom--Giai-tri3903_11_03.jpg', 'Quan-dom--Giai-tri5403_11_03.jpg', 'Quan-dom--Giai-tri2703_11_03.jpg', NULL, NULL),
-(272, 'Quần Hoa Nhiều màu Giải trí', 'Quan-Hoa-Nhieu-mau-Giai-tri1703_16_19.jpg', 18, 'Quần Hoa Nhiều màu Giải trí', 'Giải trí', 'Hoa, Cà vạt nhuộm', '100% Polyester', 393000, 0, 1, 0, 'Quan-Hoa-Nhieu-mau-Giai-tri/', 'Quan-Hoa-Nhieu-mau-Giai-tri6103_16_19.jpg', 'Quan-Hoa-Nhieu-mau-Giai-tri3703_16_19.jpg', 'Quan-Hoa-Nhieu-mau-Giai-tri1103_16_19.jpg', 'Quan-Hoa-Nhieu-mau-Giai-tri7303_16_19.jpg', NULL, NULL),
-(273, 'Quần Dây kéo màu trơn Giải trí', 'Quan-Day-keo-mau-tron-Giai-tri1703_20_39.jpg', 18, 'Quần Dây kéo màu trơn Giải trí', 'Giải trí', 'Màu trơn', '100% Polyester', 394000, 393000, 0, 0, 'Quan-Day-keo-mau-tron-Giai-tri/', 'Quan-Day-keo-mau-tron-Giai-tri4803_20_39.jpg', 'Quan-Day-keo-mau-tron-Giai-tri6003_20_39.jpg', 'Quan-Day-keo-mau-tron-Giai-tri7503_20_39.jpg', 'Quan-Day-keo-mau-tron-Giai-tri2103_20_39.jpg', NULL, NULL),
-(274, 'Quần Túi màu trơn Thể thao', 'Quan-Tui-mau-tron-The-thao4603_23_12.jpg', 18, 'Quần Túi màu trơn Thể thao', 'Giải trí', 'Ông bo', '100% Polyester', 440000, 0, 1, 0, 'Quan-Tui-mau-tron-The-thao/', 'Quan-Tui-mau-tron-The-thao2003_23_12.jpg', 'Quan-Tui-mau-tron-The-thao303_23_12.jpg', 'Quan-Tui-mau-tron-The-thao7403_23_12.jpg', 'Quan-Tui-mau-tron-The-thao7203_23_12.jpg', NULL, NULL),
-(275, 'Váy Dây kéo màu trơn Thanh lịch', 'Vay-Day-keo-mau-tron-Thanh-lich9503_27_02.jpg', 11, 'Váy Dây kéo màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 373000, 0, 0, 0, 'Vay-Day-keo-mau-tron-Thanh-lich/', 'Vay-Day-keo-mau-tron-Thanh-lich4403_27_02.jpg', 'Vay-Day-keo-mau-tron-Thanh-lich203_27_02.jpg', 'Vay-Day-keo-mau-tron-Thanh-lich1503_27_02.jpg', 'Vay-Day-keo-mau-tron-Thanh-lich203_27_02.jpg', NULL, NULL),
-(276, 'Váy Dây kéo màu trơn Hấp dẫn', 'Vay-Day-keo-mau-tron-Hap-dan3103_29_16.jpg', 11, 'Váy Dây kéo màu trơn Hấp dẫn', 'Thanh lịch', 'Màu trơn', '100% Polyester', 324000, 0, 0, 0, 'Vay-Day-keo-mau-tron-Hap-dan/', 'Vay-Day-keo-mau-tron-Hap-dan7503_29_16.jpg', 'Vay-Day-keo-mau-tron-Hap-dan3903_29_16.jpg', 'Vay-Day-keo-mau-tron-Hap-dan9603_29_16.jpg', 'Vay-Day-keo-mau-tron-Hap-dan703_29_16.jpg', NULL, NULL),
-(277, 'Váy Tương phản Mesh Báo Thanh lịch', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich8503_31_27.jpg', 11, 'Váy Tương phản Mesh Báo Thanh lịch', 'Thanh lịch', 'Hoa, Tất cả  in', '100% Polyester', 440000, 0, 0, 0, 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich/', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich8703_31_27.jpg', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich5903_31_27.jpg', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich5503_31_27.jpg', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich903_31_27.jpg', NULL, NULL),
-(278, 'Váy Dây kéo ngắn màu trơn Thanh lịch', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich6903_34_05.jpg', 11, 'Váy Dây kéo ngắn màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 324000, 0, 0, 0, 'Vay-Day-keo-ngan-mau-tron-Thanh-lich/', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich6103_34_05.jpg', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich1803_34_05.jpg', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich2203_34_05.jpg', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich9603_34_05.jpg', NULL, NULL),
-(279, 'Áo vest Cắt màu trơn Thanh lịch', 'Ao-vest-Cat-mau-tron-Thanh-lich9003_38_41.jpg', 14, 'Áo vest Cắt màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 486000, 0, 1, 0, 'Ao-vest-Cat-mau-tron-Thanh-lich/', 'Ao-vest-Cat-mau-tron-Thanh-lich2503_38_41.jpg', 'Ao-vest-Cat-mau-tron-Thanh-lich7503_38_41.jpg', 'Ao-vest-Cat-mau-tron-Thanh-lich303_38_41.jpg', 'Ao-vest-Cat-mau-tron-Thanh-lich2303_38_41.jpg', NULL, '2020-11-04 08:42:02'),
-(280, 'Áo vest Nút Sọc ca rô Thanh lịch', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich1203_41_05.jpg', 14, 'Áo vest Nút Sọc ca rô Thanh lịch', 'Thanh lịch', 'Caro', '100% Polyester', 585000, 548000, 0, 0, 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich/', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich2703_41_05.jpg', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich4303_41_05.jpg', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich6603_41_05.jpg', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich203_41_05.jpg', NULL, NULL),
-(281, 'Áo vest Thắt lưng màu trơn Thanh lịch', 'Ao-vest-That-lung-mau-tron-Thanh-lich6203_44_45.jpg', 14, 'Áo vest Thắt lưng màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 486000, 0, 0, 0, 'Ao-vest-That-lung-mau-tron-Thanh-lich/', 'Ao-vest-That-lung-mau-tron-Thanh-lich9503_44_45.jpg', 'Ao-vest-That-lung-mau-tron-Thanh-lich5203_44_45.jpg', 'Ao-vest-That-lung-mau-tron-Thanh-lich1403_44_45.jpg', 'Ao-vest-That-lung-mau-tron-Thanh-lich3503_44_45.jpg', NULL, NULL),
-(282, 'Áo vest Nút phía trước màu trơn Thanh lịch', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich7303_46_21.jpg', 14, 'Áo vest Nút phía trước màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 509000, 0, 1, 0, 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich/', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich7603_46_21.jpg', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich2903_46_21.jpg', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich3603_46_21.jpg', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich7803_46_21.jpg', NULL, NULL);
+(258, 'Đầm Nút Sọc ca rô Giải trí', 'Dam-Nut-Soc-ca-ro-Giai-tri2801_51_52.png', 16, 'Đầm Nút Sọc ca rô Giải trí	Nút, Nút phía trước\r\nChiều dài tay:	Tay áo dài\r\nLoại tay áo:	Thả vai', 'Giải trí', 'Sọc ca rô', '100% Polyester', 370000, 259000, 0, 0, 'Dam-Nut-Soc-ca-ro-Giai-tri/', 'Dam-Nut-Soc-ca-ro-Giai-tri2201_51_52.jpg', 'Dam-Nut-Soc-ca-ro-Giai-tri1501_51_52.png', 'Dam-Nut-Soc-ca-ro-Giai-tri501_51_52.jpg', 'Dam-Nut-Soc-ca-ro-Giai-tri8601_51_52.jpg', NULL, '2020-11-05 03:45:25'),
+(259, 'Đầm Dây kéo màu trơn Hấp dẫn', 'Dam-Day-keo-mau-tron-Hap-dan6001_55_34.jpg', 16, 'Đầm Dây kéo màu trơn Hấp dẫn \r\nKiểu mẫu:	màu trơn \r\nViền :	Vòng cổ \r\nChiều dài:	Ngắn', 'Hấp dẫn', 'Phù hợp', '100% Polyester', 533000, 0, 0, 1, 'Dam-Day-keo-mau-tron-Hap-dan/', 'Dam-Day-keo-mau-tron-Hap-dan7301_55_34.jpg', 'Dam-Day-keo-mau-tron-Hap-dan3201_55_34.jpg', 'Dam-Day-keo-mau-tron-Hap-dan7401_55_34.jpg', 'Dam-Day-keo-mau-tron-Hap-dan5501_55_34.jpg', NULL, '2020-11-05 13:05:43'),
+(260, 'Đầm Chia Sọc ca rô Thanh lịch', 'Dam-Chia-Soc-ca-ro-Thanh-lich7002_02_58.jpg', 16, 'Đầm Chia Sọc ca rô Thanh lịch \r\nKiểu:	eo hẹp \r\nChi tiết:	Chia \r\nChiều dài tay:	Không tay \r\nMùa:	Mùa Hè', 'Thanh lịch', 'Eo hẹp', '5% Spandex, 95% Polyester', 162000, 0, 1, 5, 'Dam-Chia-Soc-ca-ro-Thanh-lich/', 'Dam-Chia-Soc-ca-ro-Thanh-lich4702_02_58.jpg', 'Dam-Chia-Soc-ca-ro-Thanh-lich7302_02_58.jpg', 'Dam-Chia-Soc-ca-ro-Thanh-lich1102_02_58.jpg', 'Dam-Chia-Soc-ca-ro-Thanh-lich3902_02_58.jpg', NULL, '2020-11-05 13:05:43'),
+(262, 'Đầm Dây kéo Hoa Nhiều màu Boho', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho5202_31_22.jpg', 16, 'Đầm Dây kéo Hoa Nhiều màu Boho', 'Boho', 'Hoa, Tất cả  in', '100% Polyester', 370000, 0, 1, 1, 'Dam-Day-keo-Hoa-Nhieu-mau-Boho/', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho202_31_22.jpg', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho5402_31_22.jpg', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho8302_31_22.jpg', 'Dam-Day-keo-Hoa-Nhieu-mau-Boho802_31_22.jpg', NULL, '2020-11-05 13:05:43'),
+(263, 'BASICS Áo thun màu trơn Cơ bản', 'BASICS-Ao-thun-mau-tron-Co-ban6102_36_01.jpg', 12, 'BASICS Áo thun màu trơn Cơ bản', 'Cơ bản', 'Màu trơn', '5% Spandex, 95% Bông', 289000, 231000, 1, 0, 'BASICS-Ao-thun-mau-tron-Co-ban/', 'BASICS-Ao-thun-mau-tron-Co-ban6102_36_01.jpg', 'BASICS-Ao-thun-mau-tron-Co-ban3902_36_01.jpg', 'BASICS-Ao-thun-mau-tron-Co-ban6902_36_01.jpg', 'BASICS-Ao-thun-mau-tron-Co-ban8302_36_01.jpg', NULL, '2020-11-05 03:45:25'),
+(264, 'Áo thun Xù màu trơn Giải trí', 'Ao-thun-Xu-mau-tron-Giai-tri8802_40_37.jpg', 12, 'Áo thun Xù màu trơn Giải trí', 'Giải trí', 'Màu trơn', '34.5% Bông, 3.5% Spandex, 62% Polyester', 162000, 0, 0, 0, 'Ao-thun-Xu-mau-tron-Giai-tri/', 'Ao-thun-Xu-mau-tron-Giai-tri9702_40_37.jpg', 'Ao-thun-Xu-mau-tron-Giai-tri4202_40_37.jpg', 'Ao-thun-Xu-mau-tron-Giai-tri4502_40_37.jpg', 'Ao-thun-Xu-mau-tron-Giai-tri3402_40_37.jpg', NULL, '2020-11-05 03:45:25'),
+(265, 'Áo thun màu trơn Thanh lịch', 'Ao-thun-mau-tron-Thanh-lich4202_45_18.jpg', 12, 'Áo thun màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 255000, 199000, 0, 0, 'Ao-thun-mau-tron-Thanh-lich/', 'Ao-thun-mau-tron-Thanh-lich9702_45_18.jpg', 'Ao-thun-mau-tron-Thanh-lich4602_45_18.jpg', 'Ao-thun-mau-tron-Thanh-lich4202_45_18.jpg', 'Ao-thun-mau-tron-Thanh-lich5202_45_18.jpg', NULL, '2020-11-05 03:45:25'),
+(266, 'Áo thun Cắt ra màu trơn Gợi cảm', 'Ao-thun-Cat-ra-mau-tron-Goi-cam1302_48_50.jpg', 12, 'Áo thun Cắt ra màu trơn Gợi cảm', 'Gợi cảm', 'Màu trơn', '11% Bông, 3% Spandex, 86% Polyester', 324000, 0, 1, 0, 'Ao-thun-Cat-ra-mau-tron-Goi-cam/', 'Ao-thun-Cat-ra-mau-tron-Goi-cam5502_48_50.jpg', 'Ao-thun-Cat-ra-mau-tron-Goi-cam5202_48_50.jpg', 'Ao-thun-Cat-ra-mau-tron-Goi-cam6502_48_50.jpg', 'Ao-thun-Cat-ra-mau-tron-Goi-cam2802_48_50.jpg', NULL, '2020-11-05 03:45:25'),
+(267, 'Áo sơ mi Hoa Giải trí', 'Ao-so-mi-Hoa-Giai-tri3702_54_04.jpg', 13, 'Áo sơ mi Hoa Giải trí', 'Giải trí', 'Hoa, Tất cả  in', '100% Polyester', 208000, 0, 1, 1, 'Ao-so-mi-Hoa-Giai-tri/', 'Ao-so-mi-Hoa-Giai-tri2202_54_04.jpg', 'Ao-so-mi-Hoa-Giai-tri6102_54_04.jpg', 'Ao-so-mi-Hoa-Giai-tri1702_54_04.jpg', 'Ao-so-mi-Hoa-Giai-tri9302_54_04.jpg', NULL, '2020-11-05 13:05:43'),
+(268, 'Áo sơ mi Xù Tất cả trên in Giải trí', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri4402_58_31.jpg', 13, 'Áo sơ mi Xù Tất cả trên in Giải trí', 'Giải trí', 'Beo', '100% Polyester', 260000, 199000, 0, 0, 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri/', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri6902_58_31.jpg', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri4302_58_31.jpg', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri7002_58_31.jpg', 'Ao-so-mi-Xu-Tat-ca-tren-in-Giai-tri6902_58_31.jpg', NULL, '2020-11-05 03:45:25'),
+(269, 'Áo sơ mi Tương phản màu đen Thanh lịch', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich5003_01_42.jpg', 13, 'Áo sơ mi Tương phản màu đen Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 208000, 0, 1, 1, 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich/', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich2603_01_42.jpg', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich7603_01_42.jpg', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich6803_01_42.jpg', 'Ao-so-mi-Tuong-phan-mau-den-Thanh-lich6403_01_42.jpg', NULL, '2020-11-05 13:05:43'),
+(270, 'Áo sơ mi Pha lê kim cương Thanh lịch', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich803_05_54.jpg', 13, 'Áo sơ mi Pha lê kim cương Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 242000, 241000, 0, 0, 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich/', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich7703_05_54.jpg', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich4503_05_54.jpg', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich2603_05_54.jpg', 'Ao-so-mi-Pha-le-kim-cuong-Thanh-lich1303_05_54.jpg', NULL, '2020-11-05 03:45:25'),
+(271, 'Quần đóm  Giải trí', 'Quan-dom--Giai-tri7403_11_03.jpg', 18, 'Quần đóm  Giải trí', 'Giải trí', 'Hoa, Tất cả  in', '100% Polyester', 347000, 215000, 0, 0, 'Quan-dom--Giai-tri/', 'Quan-dom--Giai-tri6703_11_03.jpg', 'Quan-dom--Giai-tri3903_11_03.jpg', 'Quan-dom--Giai-tri5403_11_03.jpg', 'Quan-dom--Giai-tri2703_11_03.jpg', NULL, '2020-11-05 03:45:25'),
+(272, 'Quần Hoa Nhiều màu Giải trí', 'Quan-Hoa-Nhieu-mau-Giai-tri1703_16_19.jpg', 18, 'Quần Hoa Nhiều màu Giải trí', 'Giải trí', 'Hoa, Cà vạt nhuộm', '100% Polyester', 393000, 0, 1, 1, 'Quan-Hoa-Nhieu-mau-Giai-tri/', 'Quan-Hoa-Nhieu-mau-Giai-tri6103_16_19.jpg', 'Quan-Hoa-Nhieu-mau-Giai-tri3703_16_19.jpg', 'Quan-Hoa-Nhieu-mau-Giai-tri1103_16_19.jpg', 'Quan-Hoa-Nhieu-mau-Giai-tri7303_16_19.jpg', NULL, '2020-11-05 13:05:43'),
+(273, 'Quần Dây kéo màu trơn Giải trí', 'Quan-Day-keo-mau-tron-Giai-tri1703_20_39.jpg', 18, 'Quần Dây kéo màu trơn Giải trí', 'Giải trí', 'Màu trơn', '100% Polyester', 394000, 393000, 0, 0, 'Quan-Day-keo-mau-tron-Giai-tri/', 'Quan-Day-keo-mau-tron-Giai-tri4803_20_39.jpg', 'Quan-Day-keo-mau-tron-Giai-tri6003_20_39.jpg', 'Quan-Day-keo-mau-tron-Giai-tri7503_20_39.jpg', 'Quan-Day-keo-mau-tron-Giai-tri2103_20_39.jpg', NULL, '2020-11-05 03:45:25'),
+(274, 'Quần Túi màu trơn Thể thao', 'Quan-Tui-mau-tron-The-thao4603_23_12.jpg', 18, 'Quần Túi màu trơn Thể thao', 'Giải trí', 'Ông bo', '100% Polyester', 440000, 0, 1, 1, 'Quan-Tui-mau-tron-The-thao/', 'Quan-Tui-mau-tron-The-thao2003_23_12.jpg', 'Quan-Tui-mau-tron-The-thao303_23_12.jpg', 'Quan-Tui-mau-tron-The-thao7403_23_12.jpg', 'Quan-Tui-mau-tron-The-thao7203_23_12.jpg', NULL, '2020-11-05 13:05:43'),
+(275, 'Váy Dây kéo màu trơn Thanh lịch', 'Vay-Day-keo-mau-tron-Thanh-lich9503_27_02.jpg', 11, 'Váy Dây kéo màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 373000, 0, 0, 0, 'Vay-Day-keo-mau-tron-Thanh-lich/', 'Vay-Day-keo-mau-tron-Thanh-lich4403_27_02.jpg', 'Vay-Day-keo-mau-tron-Thanh-lich203_27_02.jpg', 'Vay-Day-keo-mau-tron-Thanh-lich1503_27_02.jpg', 'Vay-Day-keo-mau-tron-Thanh-lich203_27_02.jpg', NULL, '2020-11-05 03:45:25'),
+(276, 'Váy Dây kéo màu trơn Hấp dẫn', 'Vay-Day-keo-mau-tron-Hap-dan3103_29_16.jpg', 11, 'Váy Dây kéo màu trơn Hấp dẫn', 'Thanh lịch', 'Màu trơn', '100% Polyester', 324000, 0, 0, 0, 'Vay-Day-keo-mau-tron-Hap-dan/', 'Vay-Day-keo-mau-tron-Hap-dan7503_29_16.jpg', 'Vay-Day-keo-mau-tron-Hap-dan3903_29_16.jpg', 'Vay-Day-keo-mau-tron-Hap-dan9603_29_16.jpg', 'Vay-Day-keo-mau-tron-Hap-dan703_29_16.jpg', NULL, '2020-11-05 03:45:25'),
+(277, 'Váy Tương phản Mesh Báo Thanh lịch', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich8503_31_27.jpg', 11, 'Váy Tương phản Mesh Báo Thanh lịch', 'Thanh lịch', 'Hoa, Tất cả  in', '100% Polyester', 440000, 0, 0, 0, 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich/', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich8703_31_27.jpg', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich5903_31_27.jpg', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich5503_31_27.jpg', 'Vay-Tuong-phan-Mesh-Bao-Thanh-lich903_31_27.jpg', NULL, '2020-11-05 03:45:25'),
+(278, 'Váy Dây kéo ngắn màu trơn Thanh lịch', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich6903_34_05.jpg', 11, 'Váy Dây kéo ngắn màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 324000, 0, 0, 0, 'Vay-Day-keo-ngan-mau-tron-Thanh-lich/', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich6103_34_05.jpg', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich1803_34_05.jpg', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich2203_34_05.jpg', 'Vay-Day-keo-ngan-mau-tron-Thanh-lich9603_34_05.jpg', NULL, '2020-11-05 03:45:25'),
+(279, 'Áo vest Cắt màu trơn Thanh lịch', 'Ao-vest-Cat-mau-tron-Thanh-lich9003_38_41.jpg', 14, 'Áo vest Cắt màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 486000, 0, 1, 0, 'Ao-vest-Cat-mau-tron-Thanh-lich/', 'Ao-vest-Cat-mau-tron-Thanh-lich2503_38_41.jpg', 'Ao-vest-Cat-mau-tron-Thanh-lich7503_38_41.jpg', 'Ao-vest-Cat-mau-tron-Thanh-lich303_38_41.jpg', 'Ao-vest-Cat-mau-tron-Thanh-lich2303_38_41.jpg', NULL, '2020-11-05 03:45:25'),
+(280, 'Áo vest Nút Sọc ca rô Thanh lịch', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich1203_41_05.jpg', 14, 'Áo vest Nút Sọc ca rô Thanh lịch', 'Thanh lịch', 'Caro', '100% Polyester', 585000, 548000, 0, 0, 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich/', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich2703_41_05.jpg', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich4303_41_05.jpg', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich6603_41_05.jpg', 'Ao-vest-Nut-Soc-ca-ro-Thanh-lich203_41_05.jpg', NULL, '2020-11-05 03:45:25'),
+(281, 'Áo vest Thắt lưng màu trơn Thanh lịch', 'Ao-vest-That-lung-mau-tron-Thanh-lich6203_44_45.jpg', 14, 'Áo vest Thắt lưng màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 486000, 0, 0, 0, 'Ao-vest-That-lung-mau-tron-Thanh-lich/', 'Ao-vest-That-lung-mau-tron-Thanh-lich9503_44_45.jpg', 'Ao-vest-That-lung-mau-tron-Thanh-lich5203_44_45.jpg', 'Ao-vest-That-lung-mau-tron-Thanh-lich1403_44_45.jpg', 'Ao-vest-That-lung-mau-tron-Thanh-lich3503_44_45.jpg', NULL, '2020-11-05 03:45:25'),
+(282, 'Áo vest Nút phía trước màu trơn Thanh lịch', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich7303_46_21.jpg', 14, 'Áo vest Nút phía trước màu trơn Thanh lịch', 'Thanh lịch', 'Màu trơn', '100% Polyester', 509000, 0, 1, 0, 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich/', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich7603_46_21.jpg', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich2903_46_21.jpg', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich3603_46_21.jpg', 'Ao-vest-Nut-phia-truoc-mau-tron-Thanh-lich7803_46_21.jpg', NULL, '2020-11-05 03:45:25');
 
 -- --------------------------------------------------------
 
@@ -492,21 +425,6 @@ INSERT INTO `slide` (`id`, `trang_thai`, `ten_slide`, `img`, `tieu_de`, `noi_dun
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tin_tuc`
---
-
-CREATE TABLE `tin_tuc` (
-  `id_tin_tuc` int(10) NOT NULL,
-  `tieu_de` varchar(200) NOT NULL,
-  `noi_dung` text NOT NULL,
-  `hinh` varchar(100) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `update_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `users`
 --
 
@@ -529,9 +447,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `phone`, `level`, `address`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'thanh2107', 'tyn01685732770@gmail.com', NULL, '22222222', 0, 'Số 16C Tôn Đức Thắng, phường Mỹ Bình, TP. Long Xuyên, tỉnh An Giang', '$2y$10$G77rTBiKAC1mKJcytqm2ru4BHPAyE8diCb4s1ILHkI0Osniml2FFO', NULL, '2020-10-17 14:38:46', '2020-11-04 07:51:13'),
+(1, 'thanh2107', 'tyn01685732770@gmail.com', NULL, '999999999', 0, 'Ấp thới đông hòa châu thành Tiền Giang', '$2y$10$G77rTBiKAC1mKJcytqm2ru4BHPAyE8diCb4s1ILHkI0Osniml2FFO', NULL, '2020-10-17 14:38:46', '2020-11-05 13:06:11'),
 (2, 'admin123', 'admin@gmail.com', NULL, '123123', 3, '', '$2y$10$HScfYUDs18Jw1VfIZ8wDe.4/aO/qtmOcoXGU7RLN9HY74cwC0anEW', NULL, '2020-10-19 15:15:59', '2020-10-19 15:15:59'),
-(3, '08592788752', 'tyn016857327270@gmail.com', NULL, '433926658', 0, '', '$2y$10$U/cIOrmyK2DZIiChAn2aAOHGm8bDD.gnzn8PoxkPvqgKBJhd1jswW', NULL, '2020-10-19 15:17:40', '2020-10-19 15:17:40'),
+(3, 'thanh123', 't01685732770@gmail.com', NULL, '433926658', 0, '', '$2y$10$Mb9br/9AySwtsf7kleOeYuHACOH1PIZ7LVmKbRo7oaG/YmI6kY4b.', NULL, '2020-10-19 15:17:40', '2020-11-05 03:06:55'),
 (4, 'test123', 'test1@gmail.com', NULL, '0999999', 0, 'Số 04 đường Phan Đình Phùng, phường 3, TP.Bạc Liêu, tỉnh Bạc Liêu', '$2y$10$CyRQOrGFSM0/g9J4NKNs4uK58kWrfoI2dDQxE9iCK3tUHMWG/9BD2', NULL, '2020-11-04 08:52:58', '2020-11-04 08:55:32'),
 (5, 'NguyenVanA', 'test2@gmail.com', NULL, '2132133', 0, 'Số 82  đường Hùng Vương, TP. Bắc Giang, tỉnh Bắc Giang', '$2y$10$/wqt2aR9TQ1hMor6J8cNuOX5cKHSRhRKsLfnAuAuW/ufgi6DzjK5O', NULL, '2020-11-04 08:59:06', '2020-11-04 08:59:58');
 
@@ -557,6 +475,12 @@ ALTER TABLE `chi_tiet_sp`
   ADD KEY `fk_chitietsp_size_idx` (`id_size`);
 
 --
+-- Chỉ mục cho bảng `dong_gia`
+--
+ALTER TABLE `dong_gia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -564,23 +488,11 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Chỉ mục cho bảng `hinh_sp`
---
-ALTER TABLE `hinh_sp`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Chỉ mục cho bảng `hoa_don`
 --
 ALTER TABLE `hoa_don`
   ADD PRIMARY KEY (`id_hoa_don`),
   ADD KEY `id_khach_hang` (`id_user`);
-
---
--- Chỉ mục cho bảng `khach_hang`
---
-ALTER TABLE `khach_hang`
-  ADD PRIMARY KEY (`id_khach_hang`);
 
 --
 -- Chỉ mục cho bảng `loai_san_pham`
@@ -599,12 +511,6 @@ ALTER TABLE `mau_sp`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `nguoi_dung`
---
-ALTER TABLE `nguoi_dung`
-  ADD PRIMARY KEY (`id_nguoi_dung`);
 
 --
 -- Chỉ mục cho bảng `password_resets`
@@ -632,12 +538,6 @@ ALTER TABLE `slide`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tin_tuc`
---
-ALTER TABLE `tin_tuc`
-  ADD PRIMARY KEY (`id_tin_tuc`);
-
---
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
@@ -652,7 +552,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `chi_tiet_hd`
 --
 ALTER TABLE `chi_tiet_hd`
-  MODIFY `id_chi_tiet_HD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_chi_tiet_HD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `chi_tiet_sp`
@@ -667,22 +567,10 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `hinh_sp`
---
-ALTER TABLE `hinh_sp`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
 -- AUTO_INCREMENT cho bảng `hoa_don`
 --
 ALTER TABLE `hoa_don`
-  MODIFY `id_hoa_don` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT cho bảng `khach_hang`
---
-ALTER TABLE `khach_hang`
-  MODIFY `id_khach_hang` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hoa_don` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `loai_san_pham`
@@ -701,12 +589,6 @@ ALTER TABLE `mau_sp`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `nguoi_dung`
---
-ALTER TABLE `nguoi_dung`
-  MODIFY `id_nguoi_dung` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
