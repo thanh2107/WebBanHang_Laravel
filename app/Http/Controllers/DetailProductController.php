@@ -39,7 +39,7 @@ class DetailProductController extends Controller
 
 		     public function all_detail_product(){
 		     	$this->AuthLogin();
-		     	$detail_product = ChiTietSP::all();
+		     	$detail_product = ChiTietSP::paginate(10);
 		     	return view('admin.all_detail_product',compact('detail_product'));
 		     }
 		     public function convert_name($str) {

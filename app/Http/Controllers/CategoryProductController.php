@@ -29,7 +29,7 @@ class CategoryProductController extends Controller
     }
      public function all_category_product(){
              $this->AuthLogin();
-     		$all_category = LoaiSP::all();
+     		$all_category = LoaiSP::paginate(10);
     		return view('admin.all_category',compact('all_category'));
     }
     public function save_category_product(Request $req){

@@ -32,7 +32,7 @@ class ProductController extends Controller
 
    public function all_product(){
     $this->AuthLogin();
-    $all_product = SanPham::all();
+    $all_product = SanPham::paginate(10);
     return view('admin.all_product',compact('all_product'));
 }
  public function convert_name($str) {
