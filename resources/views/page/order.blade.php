@@ -9,16 +9,7 @@
 					<h3>  Danh sách đơn hàng</h3>
 				</div>
 				<div class="row w3-res-tb">
-					<div class="col-sm-4">
-						<?php
-						$message = Session::get('message');
-						if($message){
-
-							echo '<span class="alert alert-danger errorI">'.$message.'</span>';
-							Session::put('message',null);
-						}
-						?>
-					</div>
+					
 
 				</div>
 				<div class="table-responsive">

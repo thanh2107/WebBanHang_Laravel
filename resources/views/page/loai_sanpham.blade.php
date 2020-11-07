@@ -140,7 +140,7 @@
                             @endif
                             <img src="resources/img/product/{{$sp->hinh}}" alt="">
                             <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+                                <a href="{{route('chi-tiet-san-pham',$sp->id)}}" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
                                 <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                             </div>
                         </div>

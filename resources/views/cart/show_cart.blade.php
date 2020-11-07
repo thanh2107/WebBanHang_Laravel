@@ -81,9 +81,12 @@ $content =Cart::content();
 												<div class="quantity">
 													<form action="{{'update-cart-quantity'}}"method="post">
 														{{csrf_field()}}
-														<input  class="quatity_input"  type="text" name="quantity_cart" value="{{$v_content->qty}}">
+														<div style="display: flex;" class="col-md-12">
+														<input style="border-radius: 20px;background-color: #F0F0F0" class="quatity_input"  type="text" name="quantity_cart" value="{{$v_content->qty}}">--
 														<input  type="hidden" name="row_card" value="{{$v_content->rowId}}">
-														<input type="submit"  value="cật nhật">
+														<input style="background-color: #F0F0F0;" class="btn" type="submit"  value="cật nhật">
+														 </div>
+														
 													</form>
 												</div>
 											</td>
